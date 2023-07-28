@@ -31,4 +31,9 @@ public class CanvasArmee : MonoBehaviour
             resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<Image>();
         }
     }
+
+    public void Animate(byte score1, byte score2, byte score3)
+    {
+
+    }
 }

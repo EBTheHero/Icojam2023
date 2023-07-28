@@ -14,20 +14,28 @@ public class Armee : MonoBehaviour
     private Vector2 posDepart = new Vector2();
     private Vector2 destination = new Vector2();
     private Canvas canvas;
+    private CanvasArmee canvasArmee;
 
     private void Awake()
     {
         canvas = GetComponentInChildren<Canvas>();
         canvas.worldCamera = Camera.main;
-        canvas.GetComponent<CanvasArmee>().Init(nbDes);
+        canvasArmee = canvas.GetComponent<CanvasArmee>();
+        canvasArmee.Init(nbDes);
     }
 
     public bool Combattre(byte scoreABattre)
     {
-        byte score = 0;
-        for (byte i = 0; i < nbDes; ++nbDes)
-            score += DE[Random.Range(0, 5)];
-        return score >= scoreABattre;
+        byte score1 = DE[Random.Range(0, 5)];
+        byte score2 = 0;
+        byte score3 = 0;
+        if (nbDes > 1)
+            score2 = DE[Random.Range(0, 5)];
+        if (nbDes == 3)
+            score3 = DE[Random.Range(0, 5)];
+        canvas.enabled = true;
+        canvasArmee.Animate(score1, score2, score3);
+        return (score1 + score2 + score3) >= scoreABattre;
     }
 
     public void InitierDeplacement(Vector2 dest)
