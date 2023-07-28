@@ -38,8 +38,8 @@ public class Armee : MonoBehaviour
             score2 = DE[Random.Range(0, 5)];
         if (nbDes == 3)
             score3 = DE[Random.Range(0, 5)];
-        canvas.enabled = true;
         bool victory = (score1 + score2 + score3) >= scoreABattre;
+        canvas.enabled = true;
         canvasArmee.Animate(score1, score2, score3, victory);
         return victory;
     }

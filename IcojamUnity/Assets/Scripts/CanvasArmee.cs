@@ -46,12 +46,19 @@ public class CanvasArmee : MonoBehaviour
 
     public void Animate(byte score1, byte score2, byte score3, bool victory)
     {
+        foreach (Image i in dicePanels)
+            i.GetComponent<DiceAnimation>().StartAnimation();
         StartCoroutine(Resolve(score1, score2, score3, victory));
     }
 
     private IEnumerator Resolve(byte score1, byte score2, byte score3, bool victory)
     {
         yield return new WaitForSeconds(ANIMATION_LENGTH);
+
+        for (byte i = 0; i < dicePanels.Length; ++i)
+        {
+            dicePanels[i].GetComponent<DiceAnimation>().StopAnimation(i == 0 ? score1 : i == 1 ? score2 : score3);
+        }
 
         if (resultPanel != null)
         {
