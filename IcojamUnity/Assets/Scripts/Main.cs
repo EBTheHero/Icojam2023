@@ -8,6 +8,8 @@ public class Main : MonoBehaviour
 
     private Armee selectedArmee;
 
+    public bool PlayerTurn { get; private set; } = true;
+
     public Armee SelectedArmee
     {
         get { return selectedArmee; }
@@ -37,9 +39,6 @@ public class Main : MonoBehaviour
 
     public void EndTurn()
     {
-        foreach (var armee in Armies)
-        {
-            // Armee.attack
-        }
+        PlayerTurn = false;
     }
 }
