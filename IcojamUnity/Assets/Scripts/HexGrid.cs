@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class HexGrid : MonoBehaviour
 {
@@ -55,13 +57,81 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell GetTopLeftCell(HexCell hexCell)
 	{
-		return GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y - 1, hexCell.coordinates.Z + 1);
+		return GetCell(hexCell.coordinates.X, hexCell.coordinates.Y + 1, hexCell.coordinates.Z - 1);
 	}
-	//public List<HexCell> GetAdjacentCells(HexCell cell)
-	//{
-	//	List<HexCell> cells = new List<HexCell>();
 
-	//}
+	public HexCell GetTopRightCell(HexCell hexCell)
+	{
+		return GetCell(hexCell.coordinates.X + 1, hexCell.coordinates.Y, hexCell.coordinates.Z - 1);
+	}
 
+	public HexCell GetLeftCell(HexCell hexCell)
+	{
+		return GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y + 1, hexCell.coordinates.Z);
+	}
 
+	public HexCell GetRightCell(HexCell hexCell)
+	{
+		return GetCell(hexCell.coordinates.X + 1, hexCell.coordinates.Y - 1, hexCell.coordinates.Z);
+	}
+
+	public HexCell GetBottomLeftCell(HexCell hexCell)
+	{
+		return GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y, hexCell.coordinates.Z + 1);
+	}
+
+	public HexCell GetBottomRightCell(HexCell hexCell)
+	{
+		return GetCell(hexCell.coordinates.X, hexCell.coordinates.Y - 1, hexCell.coordinates.Z + 1);
+	}
+
+	public List<HexCell> GetAdjacentCells(HexCell cell)
+	{
+		List<HexCell> cellList = new List<HexCell>();
+
+		HexCell adjacent = GetTopLeftCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		adjacent = GetTopRightCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		adjacent = GetLeftCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		adjacent = GetRightCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		adjacent = GetBottomLeftCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		adjacent = GetBottomRightCell(cell);
+		if (adjacent != null)
+			cellList.Add(adjacent);
+
+		return cellList;
+	}
+
+	public List<HexCell> GetAlliedAdjacentCell(HexCell cell)
+	{
+		var list = GetAdjacentCells(cell);
+
+		return list.Where(x => x.Owner == HexCell.Force.Player).ToList();
+	}
+
+	public List<HexCell> GetEnemyAdjacentCell(HexCell cell)
+	{
+		var list = GetAdjacentCells(cell);
+
+		return list.Where(x => x.Owner == HexCell.Force.Enemy).ToList();
+	}
+
+	public bool AreAdjacent(HexCell cell1, HexCell cell2)
+	{
+		return GetAdjacentCells(cell1).Contains(cell2);
+	}
 }
