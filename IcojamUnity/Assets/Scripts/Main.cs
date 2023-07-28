@@ -6,19 +6,19 @@ public class Main : MonoBehaviour
 
     public Armee[] Armies;
 
-    private Armee armee;
+    private Armee selectedArmee;
 
     public Armee SelectedArmee
     {
-        get { return armee; }
+        get { return selectedArmee; }
         set
         {
-            if (armee != null)
-                armee.SetSelected(false);
+            if (selectedArmee != null)
+                selectedArmee.SetSelected(false);
 
-            armee = value;
-            if (armee != null)
-                armee.SetSelected(true);
+            selectedArmee = value;
+            if (selectedArmee != null)
+                selectedArmee.SetSelected(true);
         }
     }
 
