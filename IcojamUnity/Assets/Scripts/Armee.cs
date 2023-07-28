@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Armee : MonoBehaviour
@@ -15,6 +14,10 @@ public class Armee : MonoBehaviour
     private Vector2 destination = new Vector2();
     private Canvas canvas;
     private CanvasArmee canvasArmee;
+
+    public HexCell TargetCell;
+
+    public SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
@@ -48,7 +51,7 @@ public class Armee : MonoBehaviour
 
     private void Update()
     {
-        if(EnDeplacement)
+        if (EnDeplacement)
         {
             t += Time.deltaTime;
             transform.position = Vector2.Lerp(posDepart, destination, t / DUREE_DEPLACEMENT);
@@ -57,6 +60,30 @@ public class Armee : MonoBehaviour
                 transform.position = destination;
                 EnDeplacement = false;
             }
+        }
+    }
+
+    public void ReadyToAttackCell(HexCell cell)
+    {
+        TargetCell = cell;
+        var nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
+        InitierDeplacement(nearbyCell.transform.position);
+    }
+
+    void OnMouseDown()
+    {
+        Main.Instance.SelectedArmee = this;
+    }
+
+    public void SetSelected(bool selected)
+    {
+        if (selected)
+        {
+            spriteRenderer.color = Color.yellow;
+        }
+        else
+        {
+            spriteRenderer.color = Color.white;
         }
     }
 }

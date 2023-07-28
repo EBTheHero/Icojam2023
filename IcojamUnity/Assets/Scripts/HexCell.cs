@@ -28,13 +28,10 @@ public class HexCell : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		HexGrid.Instance.RefreshVisuals();
-
-		var cells = HexGrid.Instance.GetEnemyAdjacentCell(this);
-
-		foreach (var item in cells)
+		if (Main.Instance.SelectedArmee != null)
 		{
-			item.Highlight();
+			if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
+				Main.Instance.SelectedArmee.ReadyToAttackCell(this);
 		}
 	}
 

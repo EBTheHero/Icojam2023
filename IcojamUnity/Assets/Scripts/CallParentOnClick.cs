@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CellSpriteColliderCall : MonoBehaviour
+public class CallParentOnClick : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
