@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: attack
+    m_Hash: 130035003
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Soldat1SpriteSheet 1_0
+      m_Hash: 468708316
+      m_Sprite: {fileID: 1895909840, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1088592149, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_1
+      m_Hash: 753457994
+      m_Sprite: {fileID: -1475173932, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1634256057, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_2
+      m_Hash: 903973616
+      m_Sprite: {fileID: -888151401, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -303699965, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_3
+      m_Hash: 48675430
+      m_Sprite: {fileID: 524233808, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1767695811, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_4
+      m_Hash: 478293957
+      m_Sprite: {fileID: 2115992856, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -782320642, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_5
+      m_Hash: 730144595
+      m_Sprite: {fileID: -1340733674, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 525984049, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_6
+      m_Hash: 848056041
+      m_Sprite: {fileID: 1062271371, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1982205005, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 7
+  - m_Name: iddle
+    m_Hash: 487215349
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Soldat1SpriteSheet 1_0
+      m_Hash: 468708316
+      m_Sprite: {fileID: 1895909840, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1088592149, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_4
+      m_Hash: 478293957
+      m_Sprite: {fileID: 2115992856, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1634256057, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_5
+      m_Hash: 730144595
+      m_Sprite: {fileID: -1340733674, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1767695811, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    - m_Name: Soldat1SpriteSheet 1_6
+      m_Hash: 848056041
+      m_Sprite: {fileID: 1062271371, guid: bc3944a0c8dccc446a9f4a59c39bc080, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1634256057, guid: 7301581b17047b54d84a0397fc2d124f, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 35533d9e72dce5b4dbc370f239a08b38
+  m_ModificationHash: 638261565884691535
+  m_Version: 1

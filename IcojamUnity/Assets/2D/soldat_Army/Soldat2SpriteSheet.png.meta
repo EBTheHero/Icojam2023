@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57a14495e1ece74e9eb21927d49381f
+      internalID: -1088592149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3096a78c63b825e428997af4aee415b3
+      internalID: 1634256057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f26fbd942e63054086f43c89e16269d
+      internalID: -303699965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2268
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2a0865e83132d43883a12fdf915561
+      internalID: 1767695811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 3015
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a489eec7c9cf94a4da9fc151118fa1ff
+      internalID: -782320642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 3811
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825e03d1422e7814789d1c0cec43c06a
+      internalID: 525984049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soldat2SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 4440
+        y: 0
+        width: 474
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e752ecc34718ac6429269635ba334b42
+      internalID: -1982205005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +266,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Soldat2SpriteSheet_0: -1088592149
+      Soldat2SpriteSheet_1: 1634256057
+      Soldat2SpriteSheet_2: -303699965
+      Soldat2SpriteSheet_3: 1767695811
+      Soldat2SpriteSheet_4: -782320642
+      Soldat2SpriteSheet_5: 525984049
+      Soldat2SpriteSheet_6: -1982205005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
