@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HexGrid : MonoBehaviour
 {
@@ -56,13 +55,13 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell GetTopLeftCell(HexCell hexCell)
 	{
-		GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y - 1, hexCell.coordinates.Z + 1);
+		return GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y - 1, hexCell.coordinates.Z + 1);
 	}
-	public List<HexCell> GetAdjacentCells(HexCell cell)
-	{
-		List<HexCell> cells = new List<HexCell>();
+	//public List<HexCell> GetAdjacentCells(HexCell cell)
+	//{
+	//	List<HexCell> cells = new List<HexCell>();
 
-	}
+	//}
 
 
 }
