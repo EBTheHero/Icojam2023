@@ -5,8 +5,8 @@ using UnityEngine;
 public class HexGrid : MonoBehaviour
 {
 
-	public int width = 6;
-	public int height = 6;
+	public int width = 7;
+	public int height = 7;
 
 	public HexCell cellPrefab;
 
@@ -32,6 +32,12 @@ public class HexGrid : MonoBehaviour
 
 	void CreateCell(int x, int z, int i)
 	{
+		// Triming
+		var hexCoords = HexCoordinates.FromOffsetCoordinates(x, z);
+		if (hexCoords.Y >= -1 || hexCoords.Y <= -10
+			|| hexCoords.X >= 7 || hexCoords.X <= -2)
+			return;
+
 		Vector3 position;
 		position.x = (x + z * 0.5f - z / 2) * (HexMetrics.innerRadius * 2f);
 		position.z = 0f;
@@ -40,9 +46,9 @@ public class HexGrid : MonoBehaviour
 		HexCell cell = Instantiate<HexCell>(cellPrefab);
 		cell.transform.SetParent(transform, false);
 		cell.transform.localPosition = position;
-		cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
+		cell.coordinates = hexCoords;
 		StoreCell(cell);
-		cell.UpdateText();
+		cell.UpdateVisuals();
 	}
 
 	public void StoreCell(HexCell cell)
@@ -52,7 +58,7 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell GetCell(int x, int y, int z)
 	{
-		return cells[x - 50, y - 50, z - 50];
+		return cells[x + 50, y + 50, z + 50];
 	}
 
 	public HexCell GetTopLeftCell(HexCell hexCell)
@@ -133,5 +139,14 @@ public class HexGrid : MonoBehaviour
 	public bool AreAdjacent(HexCell cell1, HexCell cell2)
 	{
 		return GetAdjacentCells(cell1).Contains(cell2);
+	}
+
+	public void RefreshVisuals()
+	{
+		foreach (var item in cells)
+		{
+			if (item != null)
+				item.UpdateVisuals();
+		}
 	}
 }
