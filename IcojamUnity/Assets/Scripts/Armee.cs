@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Armee : MonoBehaviour
 {
@@ -9,11 +8,20 @@ public class Armee : MonoBehaviour
     public static readonly byte[] DE = new byte[6] { 0, 2, 3, 4, 5, 10 };
 
     [SerializeField] private byte nbDes = 0;
+    [SerializeField] private GameObject dicePanel;
 
     public bool EnDeplacement { get; private set; } = false;
     private float t = 0f;
     private Vector2 posDepart = new Vector2();
     private Vector2 destination = new Vector2();
+    private Canvas canvas;
+
+    private void Awake()
+    {
+        canvas = GetComponentInChildren<Canvas>();
+        canvas.worldCamera = Camera.main;
+        
+    }
 
     public bool Combattre(byte scoreABattre)
     {
