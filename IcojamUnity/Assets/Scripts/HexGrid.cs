@@ -28,6 +28,16 @@ public class HexGrid : MonoBehaviour
 				CreateCell(x, z, i++);
 			}
 		}
+
+		foreach (var item in cells)
+		{
+
+			if (item != null)
+			{
+				item.InitStats();
+				item.UpdateVisuals();
+			}
+		}
 	}
 
 	void CreateCell(int x, int z, int i)
@@ -62,9 +72,6 @@ public class HexGrid : MonoBehaviour
 			Main.Instance.EnemyHomeCell = cell;
 
 		StoreCell(cell);
-
-		cell.InitStats();
-		cell.UpdateVisuals();
 	}
 
 	public void StoreCell(HexCell cell)

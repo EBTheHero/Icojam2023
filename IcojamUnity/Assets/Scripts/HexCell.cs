@@ -57,7 +57,7 @@ public class HexCell : MonoBehaviour
 
 	public void InitStats()
 	{
-		TileToughness = coordinates.Z + 3;
+		TileToughness = (byte)(Main.Instance.Difficulty - AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, this).Count);
 	}
 
 	public void Highlight()
