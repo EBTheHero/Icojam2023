@@ -8,6 +8,10 @@ public class Main : MonoBehaviour
 
     private Armee selectedArmee;
 
+    public HexCell HomeCell;
+    public HexCell EnemyHomeCell;
+
+
     public bool PlayerTurn { get; private set; } = true;
 
     public Armee SelectedArmee

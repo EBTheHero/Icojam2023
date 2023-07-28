@@ -55,8 +55,15 @@ public class HexGrid : MonoBehaviour
 		else
 			cell.Owner = HexCell.Force.Enemy;
 
+		if (cell.coordinates == new HexCoordinates(4, 0))
+			Main.Instance.HomeCell = cell;
+
+		if (cell.coordinates == new HexCoordinates(1, 6))
+			Main.Instance.EnemyHomeCell = cell;
 
 		StoreCell(cell);
+
+		cell.InitStats();
 		cell.UpdateVisuals();
 	}
 

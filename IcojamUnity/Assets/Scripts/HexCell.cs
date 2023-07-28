@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HexCell : MonoBehaviour
 {
@@ -12,13 +12,18 @@ public class HexCell : MonoBehaviour
 
 	public TMPro.TextMeshProUGUI textMeshPro;
 
-	public int TileToughtness = 2;
+	public int TileToughtness = 5;
 	public void UpdateVisuals()
 	{
-		textMeshPro.text = coordinates.ToString();
-		//textMeshPro.text = TileToughtness.ToString();
+		//textMeshPro.text = coordinates.ToString();
+		textMeshPro.text = Owner == Force.Enemy ? TileToughtness.ToString() : "";
 
 		spriteRenderer.color = Owner == Force.Player ? PlayerColor : EnemyColor;
+	}
+
+	public void InitStats()
+	{
+		TileToughtness = coordinates.Z + 3;
 	}
 
 	public void Highlight()
@@ -28,7 +33,7 @@ public class HexCell : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		if (Main.Instance.SelectedArmee != null)
+		if (Main.Instance.SelectedArmee != null && Owner == Force.Enemy)
 		{
 			if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
 				Main.Instance.SelectedArmee.ReadyToAttackCell(this);
