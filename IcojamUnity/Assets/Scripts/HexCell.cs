@@ -12,18 +12,18 @@ public class HexCell : MonoBehaviour
 
 	public TMPro.TextMeshProUGUI textMeshPro;
 
-	public int TileToughtness = 5;
+	public byte TileToughness = 5;
 	public void UpdateVisuals()
 	{
 		//textMeshPro.text = coordinates.ToString();
-		textMeshPro.text = Owner == Force.Enemy ? TileToughtness.ToString() : "";
+		textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
 
 		spriteRenderer.color = Owner == Force.Player ? PlayerColor : EnemyColor;
 	}
 
 	public void InitStats()
 	{
-		TileToughtness = coordinates.Z + 3;
+		TileToughness = coordinates.Z + 3;
 	}
 
 	public void Highlight()
