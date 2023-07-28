@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,9 @@ public class CanvasArmee : MonoBehaviour
 
     private Image dicePanelGroup;
     private Image[] dicePanels;
-    private Image resultPanel;
+    private TextMeshProUGUI resultPanel;
+
+    public const float ANIMATION_LENGTH = 2.0f;
 
     public void Init(byte nbDes)
     { 
@@ -28,12 +31,20 @@ public class CanvasArmee : MonoBehaviour
         if (nbDes > 1)
         {
             Instantiate(equalsPrefab, dicePanelGroup.transform);
-            resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<Image>();
+            resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<TextMeshProUGUI>();
         }
     }
 
     public void Animate(byte score1, byte score2, byte score3)
     {
+        StartCoroutine(Resolve(score1, score2, score3));
+    }
 
+    private IEnumerator Resolve(byte score1, byte score2, byte score3)
+    {
+        yield return new WaitForSeconds(ANIMATION_LENGTH);
+
+        if (resultPanel != null)
+            resultPanel.text = (score1 + score2 + score3).ToString();
     }
 }
