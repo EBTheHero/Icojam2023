@@ -10,7 +10,8 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell cellPrefab;
 
-	public HexCell[,,] cells;
+	HexCell[,,] cells;
+	public List<HexCell> cellsList = new List<HexCell>();
 
 	public static HexGrid Instance;
 
@@ -34,11 +35,14 @@ public class HexGrid : MonoBehaviour
 
 			if (item != null)
 			{
+				cellsList.Add(item);
 				item.InitStats();
 				item.UpdateVisuals();
 			}
 		}
 	}
+
+
 
 	void CreateCell(int x, int z, int i)
 	{
@@ -72,6 +76,32 @@ public class HexGrid : MonoBehaviour
 			Main.Instance.EnemyHomeCell = cell;
 
 		StoreCell(cell);
+	}
+
+	public void CheckForCircledTiles()
+	{
+		foreach (var item in cellsList)
+		{
+
+			if (item.AdjacentCells.All(x => x.Owner != item.Owner))
+			{
+				// Tile is circled!
+				switch (item.Owner)
+				{
+					case HexCell.Force.Player:
+						item.Owner = HexCell.Force.Enemy;
+						break;
+					case HexCell.Force.Enemy:
+						item.Owner = HexCell.Force.Player;
+						break;
+					case HexCell.Force.NoOne:
+						break;
+					default:
+						break;
+				}
+				item.UpdateVisuals();
+			}
+		}
 	}
 
 	public void StoreCell(HexCell cell)
@@ -166,7 +196,7 @@ public class HexGrid : MonoBehaviour
 
 	public void RefreshVisuals()
 	{
-		foreach (var item in cells)
+		foreach (var item in cellsList)
 		{
 			if (item != null)
 				item.UpdateVisuals();

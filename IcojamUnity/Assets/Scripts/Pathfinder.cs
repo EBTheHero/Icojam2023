@@ -46,7 +46,7 @@ public static class AStarPathfinding
 			}
 
 			// Investigating each adjacent tile of the current tile.
-			foreach (HexCell adjacentTile in currentTile.AdjacentTiles)
+			foreach (HexCell adjacentTile in currentTile.AdjacentCells)
 			{
 				// Ignore not walkable adjacent tiles.
 				if (!(asForce == Force.NoOne || adjacentTile.Owner == asForce))
@@ -85,7 +85,7 @@ public static class AStarPathfinding
 
 			for (int i = endPoint.g - 1; i >= 0; i--)
 			{
-				currentTile = closedPathTiles.Find(x => x.g == i && currentTile.AdjacentTiles.Contains(x));
+				currentTile = closedPathTiles.Find(x => x.g == i && currentTile.AdjacentCells.Contains(x));
 				finalPathTiles.Add(currentTile);
 			}
 

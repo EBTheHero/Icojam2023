@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HexCell : MonoBehaviour
 {
-	public Force Owner = Force.Player;
+	private Force owner = Force.Player;
 	public HexCoordinates coordinates;
 	public SpriteRenderer spriteRenderer;
 
@@ -32,7 +33,7 @@ public class HexCell : MonoBehaviour
 
 	private List<HexCell> adjacentTiles;
 
-	public List<HexCell> AdjacentTiles
+	public List<HexCell> AdjacentCells
 	{
 		get
 		{
@@ -46,6 +47,7 @@ public class HexCell : MonoBehaviour
 
 	}
 
+	public Force Owner { get => owner; set { owner = value; HexGrid.Instance.CheckForCircledTiles(); } }
 
 	public void UpdateVisuals()
 	{
@@ -67,10 +69,30 @@ public class HexCell : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		if (Main.Instance.SelectedArmee != null && Owner == Force.Enemy)
+		if (GameObject.Find("DevToggle").GetComponent<Toggle>().isOn)
 		{
-			if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
-				Main.Instance.SelectedArmee.ReadyToAttackCell(this);
+			switch (this.Owner)
+			{
+				case HexCell.Force.Player:
+					this.Owner = HexCell.Force.Enemy;
+					break;
+				case HexCell.Force.Enemy:
+					this.Owner = HexCell.Force.Player;
+					break;
+				case HexCell.Force.NoOne:
+					break;
+				default:
+					break;
+			}
+			UpdateVisuals();
+		}
+		else
+		{
+			if (Main.Instance.SelectedArmee != null && Owner == Force.Enemy)
+			{
+				if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
+					Main.Instance.SelectedArmee.ReadyToAttackCell(this);
+			}
 		}
 	}
 
