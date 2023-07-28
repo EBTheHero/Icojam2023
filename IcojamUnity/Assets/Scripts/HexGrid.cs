@@ -47,6 +47,15 @@ public class HexGrid : MonoBehaviour
 		cell.transform.SetParent(transform, false);
 		cell.transform.localPosition = position;
 		cell.coordinates = hexCoords;
+
+		if (cell.coordinates.X <= 5 && cell.coordinates.X >= 3
+			&& cell.coordinates.Y <= -3 && cell.coordinates.Y >= -5
+			&& cell.coordinates.Z == 0)
+			cell.Owner = HexCell.Force.Player;
+		else
+			cell.Owner = HexCell.Force.Enemy;
+
+
 		StoreCell(cell);
 		cell.UpdateVisuals();
 	}

@@ -30,7 +30,7 @@ public class HexCell : MonoBehaviour
 	{
 		HexGrid.Instance.RefreshVisuals();
 
-		var cells = HexGrid.Instance.GetAdjacentCells(this);
+		var cells = HexGrid.Instance.GetEnemyAdjacentCell(this);
 
 		foreach (var item in cells)
 		{
