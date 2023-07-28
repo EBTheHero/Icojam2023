@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Armee : MonoBehaviour
 {
@@ -8,19 +9,37 @@ public class Armee : MonoBehaviour
     public static readonly byte[] DE = new byte[6] { 0, 2, 3, 4, 5, 10 };
 
     [SerializeField] private byte nbDes = 0;
-    [SerializeField] private GameObject dicePanel;
+    [SerializeField] private GameObject dicePanelPrefab;
+    [SerializeField] private GameObject plusPrefab;
+    [SerializeField] private GameObject equalsPrefab;
+    [SerializeField] private GameObject resultPanelPrefab;
 
     public bool EnDeplacement { get; private set; } = false;
     private float t = 0f;
     private Vector2 posDepart = new Vector2();
     private Vector2 destination = new Vector2();
     private Canvas canvas;
+    private Image dicePanelGroup;
+    private Image[] dicePanels;
+    private Image resultPanel;
 
     private void Awake()
     {
         canvas = GetComponentInChildren<Canvas>();
+        dicePanelGroup = canvas.GetComponentInChildren<Image>();
         canvas.worldCamera = Camera.main;
-        
+        dicePanels = new Image[nbDes];
+        for(byte i = 0; i < nbDes; ++i)
+        {
+            if (i > 0)
+                Instantiate(plusPrefab, dicePanelGroup.transform);
+            dicePanels[i] = Instantiate(dicePanelPrefab, dicePanelGroup.transform).GetComponent<Image>();
+        }
+        if (nbDes > 1)
+        {
+            Instantiate(equalsPrefab, dicePanelGroup.transform);
+            resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<Image>();
+        }
     }
 
     public bool Combattre(byte scoreABattre)
