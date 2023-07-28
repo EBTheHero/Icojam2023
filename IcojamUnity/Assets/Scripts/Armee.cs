@@ -8,10 +8,6 @@ public class Armee : MonoBehaviour
     public static readonly byte[] DE = new byte[6] { 0, 2, 3, 4, 5, 10 };
 
     [SerializeField] private byte nbDes = 0;
-    [SerializeField] private GameObject dicePanelPrefab;
-    [SerializeField] private GameObject plusPrefab;
-    [SerializeField] private GameObject equalsPrefab;
-    [SerializeField] private GameObject resultPanelPrefab;
 
     public bool EnDeplacement { get; private set; } = false;
     private float t = 0f;

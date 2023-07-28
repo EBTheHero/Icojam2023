@@ -47,10 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbDes: 0
-  dicePanelPrefab: {fileID: 8419744207270678818, guid: 6f2835c44d83dee4ea764c7b92545ae6, type: 3}
-  plusPrefab: {fileID: 5669715663013132430, guid: 78b2d784534ba5545bfe37dda1069c83, type: 3}
-  equalsPrefab: {fileID: 9125367677101274233, guid: 2d534179521c14b4a9739d5149dfde85, type: 3}
-  resultPanelPrefab: {fileID: 6815375854442860074, guid: bd356350f50e2a5468f0b070dce23223, type: 3}
 --- !u!1 &6177359389049422018
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548663b1eb7270743a5fd72c4b74c1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dicePanelPrefab: {fileID: 8419744207270678818, guid: 6f2835c44d83dee4ea764c7b92545ae6, type: 3}
+  plusPrefab: {fileID: 5669715663013132430, guid: 78b2d784534ba5545bfe37dda1069c83, type: 3}
+  equalsPrefab: {fileID: 9125367677101274233, guid: 2d534179521c14b4a9739d5149dfde85, type: 3}
+  resultPanelPrefab: {fileID: 6815375854442860074, guid: bd356350f50e2a5468f0b070dce23223, type: 3}
 --- !u!1 &8776195613822600162
 GameObject:
   m_ObjectHideFlags: 0
