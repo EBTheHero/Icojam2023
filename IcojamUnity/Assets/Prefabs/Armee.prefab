@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nbDes: 0
-  TargetCell: {fileID: 0}
   spriteRenderer: {fileID: 3041217583696432355}
 --- !u!1 &6177359389049422018
 GameObject:
@@ -180,6 +179,7 @@ GameObject:
   - component: {fileID: 4350261401944068405}
   - component: {fileID: 8687304685799963703}
   - component: {fileID: 7250025729585581116}
+  - component: {fileID: 2301624701121187000}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -294,6 +294,22 @@ MonoBehaviour:
   plusPrefab: {fileID: 5669715663013132430, guid: 78b2d784534ba5545bfe37dda1069c83, type: 3}
   equalsPrefab: {fileID: 9125367677101274233, guid: 2d534179521c14b4a9739d5149dfde85, type: 3}
   resultPanelPrefab: {fileID: 6815375854442860074, guid: bd356350f50e2a5468f0b070dce23223, type: 3}
+--- !u!111 &2301624701121187000
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8086356977962585696}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: afec2cc17b9af334dbe3e6116147005a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: afec2cc17b9af334dbe3e6116147005a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &8776195613822600162
 GameObject:
   m_ObjectHideFlags: 0

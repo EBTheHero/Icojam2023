@@ -9,13 +9,15 @@ public class Armee : MonoBehaviour
     [SerializeField] private byte nbDes = 0;
 
     public bool EnDeplacement { get; private set; } = false;
+    public bool Used { get; set; }
+
     private float t = 0f;
     private Vector2 posDepart = new Vector2();
     private Vector2 destination = new Vector2();
     private Canvas canvas;
     private CanvasArmee canvasArmee;
 
-    public HexCell TargetCell;
+    [System.NonSerialized] public HexCell TargetCell;
 
     public SpriteRenderer spriteRenderer;
 
@@ -37,8 +39,9 @@ public class Armee : MonoBehaviour
         if (nbDes == 3)
             score3 = DE[Random.Range(0, 5)];
         canvas.enabled = true;
-        canvasArmee.Animate(score1, score2, score3);
-        return (score1 + score2 + score3) >= scoreABattre;
+        bool victory = (score1 + score2 + score3) >= scoreABattre;
+        canvasArmee.Animate(score1, score2, score3, victory);
+        return victory;
     }
 
     public void InitierDeplacement(Vector2 dest)
@@ -59,12 +62,16 @@ public class Armee : MonoBehaviour
             {
                 transform.position = destination;
                 EnDeplacement = false;
+                if (TargetCell != null)
+                    Combattre(TargetCell.TileToughness);
             }
         }
     }
 
     public void ReadyToAttackCell(HexCell cell)
     {
+        if (Used || !Main.Instance.PlayerTurn)
+            return;
         TargetCell = cell;
         var nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
         InitierDeplacement(nearbyCell.transform.position);
@@ -72,6 +79,8 @@ public class Armee : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (Used || !Main.Instance.PlayerTurn)
+            return;
         Main.Instance.SelectedArmee = this;
     }
 
@@ -85,5 +94,18 @@ public class Armee : MonoBehaviour
         {
             spriteRenderer.color = Color.white;
         }
+    }
+
+    public void ResolveCombat(bool victory)
+    {
+        canvas.enabled = false;
+        if(victory)
+        {
+            TargetCell.Owner = HexCell.Force.Player;
+            TargetCell.UpdateVisuals();
+            InitierDeplacement(TargetCell.transform.position);
+        }
+        TargetCell = null;
+        Used = true;
     }
 }

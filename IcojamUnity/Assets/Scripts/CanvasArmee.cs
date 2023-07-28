@@ -12,11 +12,20 @@ public class CanvasArmee : MonoBehaviour
     [SerializeField] private GameObject equalsPrefab;
     [SerializeField] private GameObject resultPanelPrefab;
 
+    private Animation anim;
     private Image dicePanelGroup;
     private Image[] dicePanels;
     private TextMeshProUGUI resultPanel;
+    private Armee army;
 
     public const float ANIMATION_LENGTH = 2.0f;
+    public const float RESULT_DISPLAY_LENGTH = 2.0f;
+
+    private void Awake()
+    {
+        army = GetComponentInParent<Armee>();
+        anim = GetComponent<Animation>();
+    }
 
     public void Init(byte nbDes)
     { 
@@ -35,16 +44,29 @@ public class CanvasArmee : MonoBehaviour
         }
     }
 
-    public void Animate(byte score1, byte score2, byte score3)
+    public void Animate(byte score1, byte score2, byte score3, bool victory)
     {
-        StartCoroutine(Resolve(score1, score2, score3));
+        StartCoroutine(Resolve(score1, score2, score3, victory));
     }
 
-    private IEnumerator Resolve(byte score1, byte score2, byte score3)
+    private IEnumerator Resolve(byte score1, byte score2, byte score3, bool victory)
     {
         yield return new WaitForSeconds(ANIMATION_LENGTH);
 
         if (resultPanel != null)
+        {
+            resultPanel.color = victory ? Color.green : Color.red;
             resultPanel.text = (score1 + score2 + score3).ToString();
+        }
+
+        anim.Play();
+        yield return new WaitForSeconds(RESULT_DISPLAY_LENGTH);
+
+        army.ResolveCombat(victory);
+        if (resultPanel != null)
+        {
+            resultPanel.text = "?";
+            resultPanel.color = Color.white;
+        }
     }
 }
