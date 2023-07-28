@@ -10,7 +10,7 @@ public class HexGrid : MonoBehaviour
 
 	public HexCell cellPrefab;
 
-	HexCell[,,] cells;
+	public HexCell[,,] cells;
 
 	public static HexGrid Instance;
 

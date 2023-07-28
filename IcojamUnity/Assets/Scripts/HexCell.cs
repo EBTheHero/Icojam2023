@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class HexCell : MonoBehaviour
 {
@@ -13,6 +14,39 @@ public class HexCell : MonoBehaviour
 	public TMPro.TextMeshProUGUI textMeshPro;
 
 	public byte TileToughness = 5;
+
+	/// <summary>
+	/// Sum of G and H.
+	/// </summary>
+	public int F => g + h;
+
+	/// <summary>
+	/// Cost from start tile to this tile.
+	/// </summary>
+	public int g;
+
+	/// <summary>
+	/// Estimated cost from this tile to destination tile.
+	/// </summary>
+	public int h;
+
+	private List<HexCell> adjacentTiles;
+
+	public List<HexCell> AdjacentTiles
+	{
+		get
+		{
+			if (adjacentTiles == null)
+			{
+				adjacentTiles = HexGrid.Instance.GetAdjacentCells(this);
+			}
+
+			return adjacentTiles;
+		}
+
+	}
+
+
 	public void UpdateVisuals()
 	{
 		//textMeshPro.text = coordinates.ToString();

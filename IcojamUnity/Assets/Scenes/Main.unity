@@ -389,6 +389,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Armies: []
+  HomeCell: {fileID: 0}
+  EnemyHomeCell: {fileID: 0}
 --- !u!4 &161288875
 Transform:
   m_ObjectHideFlags: 0
