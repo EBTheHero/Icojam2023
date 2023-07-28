@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class HexGrid : MonoBehaviour
 {
@@ -8,17 +8,17 @@ public class HexGrid : MonoBehaviour
 	public int height = 6;
 
 	public HexCell cellPrefab;
-	public Text cellLabelPrefab;
 
-	HexCell[] cells;
+	HexCell[,,] cells;
 
-	Canvas gridCanvas;
+	public static HexGrid Instance;
 
-	void Awake()
+	void Start()
 	{
-		gridCanvas = GetComponentInChildren<Canvas>();
+		if (Instance == null)
+			Instance = this;
 
-		cells = new HexCell[height * width];
+		cells = new HexCell[100, 100, 100];
 
 		for (int z = 0, i = 0; z < height; z++)
 		{
@@ -29,10 +29,6 @@ public class HexGrid : MonoBehaviour
 		}
 	}
 
-	void Start()
-	{
-	}
-
 	void CreateCell(int x, int z, int i)
 	{
 		Vector3 position;
@@ -40,10 +36,33 @@ public class HexGrid : MonoBehaviour
 		position.z = 0f;
 		position.y = z * (HexMetrics.outerRadius * 1.5f);
 
-		HexCell cell = cells[i] = Instantiate<HexCell>(cellPrefab);
+		HexCell cell = Instantiate<HexCell>(cellPrefab);
 		cell.transform.SetParent(transform, false);
 		cell.transform.localPosition = position;
 		cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
+		StoreCell(cell);
 		cell.UpdateText();
 	}
+
+	public void StoreCell(HexCell cell)
+	{
+		cells[cell.coordinates.X + 50, cell.coordinates.Y + 50, cell.coordinates.Z + 50] = cell;
+	}
+
+	public HexCell GetCell(int x, int y, int z)
+	{
+		return cells[x - 50, y - 50, z - 50];
+	}
+
+	public HexCell GetTopLeftCell(HexCell hexCell)
+	{
+		GetCell(hexCell.coordinates.X - 1, hexCell.coordinates.Y - 1, hexCell.coordinates.Z + 1);
+	}
+	public List<HexCell> GetAdjacentCells(HexCell cell)
+	{
+		List<HexCell> cells = new List<HexCell>();
+
+	}
+
+
 }
