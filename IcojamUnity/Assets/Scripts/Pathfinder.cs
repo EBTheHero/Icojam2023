@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static HexCell;
 /// <summary>
 /// Implementation of A* pathfinding algorithm.
 /// </summary>
@@ -12,7 +13,7 @@ public static class AStarPathfinding
 	/// </summary>
 	/// <param name="startPoint">Start tile.</param>
 	/// <param name="endPoint">Destination tile.</param>
-	public static List<HexCell> FindPath(HexCell startPoint, HexCell endPoint)
+	public static List<HexCell> FindPath(HexCell startPoint, HexCell endPoint, Force asForce)
 	{
 		List<HexCell> openPathTiles = new List<HexCell>();
 		List<HexCell> closedPathTiles = new List<HexCell>();
@@ -48,10 +49,10 @@ public static class AStarPathfinding
 			foreach (HexCell adjacentTile in currentTile.AdjacentTiles)
 			{
 				// Ignore not walkable adjacent tiles.
-				//if (adjacentTile.isObstacle)
-				//{
-				//	continue;
-				//}
+				if (!(asForce == Force.NoOne || adjacentTile.Owner == asForce))
+				{
+					continue;
+				}
 
 				// Ignore the tile if it's already in the closed list.
 				if (closedPathTiles.Contains(adjacentTile))

@@ -12,6 +12,7 @@ public class Main : MonoBehaviour
     public HexCell EnemyHomeCell;
 
     public int Difficulty = 11;
+    public float TileDistanceMultiplicatior = 0.5f;
     public bool PlayerTurn { get; private set; } = true;
 
     public Armee SelectedArmee

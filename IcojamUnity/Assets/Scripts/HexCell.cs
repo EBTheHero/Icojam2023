@@ -57,7 +57,7 @@ public class HexCell : MonoBehaviour
 
 	public void InitStats()
 	{
-		TileToughness = (byte)(Main.Instance.Difficulty - AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, this).Count);
+		TileToughness = (byte)(Main.Instance.Difficulty - Main.Instance.TileDistanceMultiplicatior * (AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, this, Force.NoOne).Count - 1));
 	}
 
 	public void Highlight()
@@ -77,6 +77,7 @@ public class HexCell : MonoBehaviour
 	public enum Force
 	{
 		Player,
-		Enemy
+		Enemy,
+		NoOne
 	}
 }

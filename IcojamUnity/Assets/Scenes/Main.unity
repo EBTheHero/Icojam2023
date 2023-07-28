@@ -391,6 +391,8 @@ MonoBehaviour:
   Armies: []
   HomeCell: {fileID: 0}
   EnemyHomeCell: {fileID: 0}
+  Difficulty: 11
+  TileDistanceMultiplicatior: 1.5
 --- !u!4 &161288875
 Transform:
   m_ObjectHideFlags: 0
