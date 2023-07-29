@@ -158,6 +158,7 @@ public class Armee : MonoBehaviour
             {
                 // counter attack success
                 EnemyAI.Instance.CounterAttackSuccess();
+                Main.Instance.VerifyEndTurnEnabled();
             }
             else
             {

@@ -105,38 +105,52 @@ public class EnemyAI : MonoBehaviour
 		{
 			// Find the closest cell to the player home
 			var results = new List<(int, HexCell, HexCell)>();
-			foreach (var item in HexGrid.Instance.GetOwnerCells(HexCell.Force.Enemy))
+			foreach (var potentialAttackingCell in HexGrid.Instance.GetOwnerCells(HexCell.Force.Enemy))
 			{
-				var path = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
+				var path = AStarPathfinding.FindPath(potentialAttackingCell, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
 				if (path.Count > 0)
 				{
 					var cellToAttack = path[1];
 					if (cellToAttack != lastPickedAttackedCell && cellToAttack.Owner == HexCell.Force.Player)
-						results.Add((path.Count, item, cellToAttack));
+						results.Add((path.Count, potentialAttackingCell, cellToAttack));
 					else
 					{
-						// attempt a different direction
-						var pathWorse = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks, true);
-						cellToAttack = pathWorse[1];
-						if (cellToAttack != lastPickedAttackedCell && cellToAttack.Owner == HexCell.Force.Player)
-							results.Add((path.Count, item, cellToAttack));
+						// attempt a different cell
+						var surrounding = HexGrid.Instance.GetAlliedAdjacentCell(potentialAttackingCell);
+						surrounding.Remove(lastPickedAttackedCell);
+						if (surrounding.Count > 0)
+							results.Add((path.Count, potentialAttackingCell, surrounding.First()));
 					}
 				}
 			}
 
-			AttackingCell = results.OrderBy(x => x.Item1).First().Item2;
-			AttackedCell = results.OrderBy(x => x.Item1).First().Item3;
+			if (results.Count > 0)
+			{
+				AttackingCell = results.OrderBy(x => x.Item1).First().Item2;
+				AttackedCell = results.OrderBy(x => x.Item1).First().Item3;
 
 
-			foundGoodStrat = true;
-			Debug.Log("AI strat: Attack closest cell to player home");
+				foundGoodStrat = true;
+				Debug.Log("AI strat: Attack closest cell to player home");
+			}
+			else
+			{
+				Debug.Log("AI: no valid cell to attack (only possible one has been picked last turn");
+
+			}
+
 		}
 
 		if (!foundGoodStrat)
+		{
 			lastPickedAttackedCell = null;
+			attackArrow.HideArrow();
+		}
 		else
+		{
 			lastPickedAttackedCell = AttackedCell;
-		attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
+			attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
+		}
 
 	}
 
