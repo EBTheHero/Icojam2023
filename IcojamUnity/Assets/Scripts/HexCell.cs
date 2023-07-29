@@ -164,11 +164,11 @@ public class HexCell : MonoBehaviour
 
 		//path testing
 
-		//var path = AStarPathfinding.FindPath(Main.Instance.HomeCell, this, Force.Player);
+		//var path = AStarPathfinding.FindPath(Main.Instance.HomeCell, this, Force.OnlyRocks);
 		//HexGrid.Instance.RefreshVisuals();
 		//foreach (var item in path)
 		//{
-		//	item.spriteRenderer.color = Color.gray;
+		//	item.spriteRenderer.color = Color.cyan;
 		//}
 
 		//path = AStarPathfinding.FindPath(Main.Instance.HomeCell, this, Force.Player, true);

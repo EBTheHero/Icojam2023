@@ -70,15 +70,20 @@ public class EnemyAI : MonoBehaviour
 				// find the strongest attack amongst candidates
 				foreach (var item in potentialCandidates)
 				{
-					potentialAttacks.Add((item, FindBestAttackingCell(item)));
+					HexCell hexCell = FindBestAttackingCell(item);
+					if (hexCell != null)
+						potentialAttacks.Add((item, hexCell));
 				}
 
-				var attack = potentialAttacks.OrderByDescending(item => item.Item2.TileToughness).First();
-				AttackingCell = attack.Item2;
-				AttackedCell = attack.Item1;
+				if (potentialAttacks.Count > 0)
+				{
+					var attack = potentialAttacks.OrderByDescending(item => item.Item2.TileToughness).First();
+					AttackingCell = attack.Item2;
+					AttackedCell = attack.Item1;
 
-				Debug.Log("AI strat: Surround strongest cut");
-				foundGoodStrat = true;
+					Debug.Log("AI strat: Surround strongest cut");
+					foundGoodStrat = true;
+				}
 			}
 		}
 
@@ -105,7 +110,11 @@ public class EnemyAI : MonoBehaviour
 
 	public HexCell FindBestAttackingCell(HexCell attackedCell)
 	{
-		return HexGrid.Instance.GetEnemyAdjacentCell(attackedCell).OrderByDescending(item => item.TileToughness).First();
+		List<HexCell> attackingCells = HexGrid.Instance.GetEnemyAdjacentCell(attackedCell);
+		if (attackingCells.Count > 0)
+			return attackingCells.OrderByDescending(item => item.TileToughness).First();
+		else
+			return null;
 	}
 
 	void UpdateArrow()
