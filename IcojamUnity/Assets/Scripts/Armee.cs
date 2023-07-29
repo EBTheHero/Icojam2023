@@ -69,6 +69,12 @@ public class Armee : MonoBehaviour
         t = 0;
         posDepart = transform.position;
         destination = dest.transform.position;
+
+        foreach (var item in Main.Instance.Armies)
+        {
+            if (item != this)
+                item.MoveOutOfTheWayOfCell(dest);
+        }
     }
 
     private void Update()
@@ -146,5 +152,16 @@ public class Armee : MonoBehaviour
         TargetCell = null;
         Used = true;
         Main.Instance.SelectedArmee = null;
+    }
+
+    public void MoveOutOfTheWayOfCell(HexCell cell)
+    {
+        if (currentCell == cell)
+        {
+            // Army is in the way. Moving to another tile.
+            var surroundingTiles = HexGrid.Instance.GetAlliedAdjacentCell(currentCell);
+            if (surroundingTiles != null && surroundingTiles.Count > 0)
+                InitierDeplacement(surroundingTiles[0]);
+        }
     }
 }

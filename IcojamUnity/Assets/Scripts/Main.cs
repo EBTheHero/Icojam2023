@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static HexCell;
 
@@ -5,7 +6,7 @@ public class Main : MonoBehaviour
 {
     public static Main Instance;
 
-    public Armee[] Armies;
+    public List<Armee> Armies = new List<Armee>();
 
     private Armee selectedArmee;
 
