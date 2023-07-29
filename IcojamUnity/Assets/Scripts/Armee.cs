@@ -70,7 +70,6 @@ public class Armee : MonoBehaviour
 
     public void InitierDeplacement(HexCell dest)
     {
-        Main.Instance.DisableEndTurn();
         currentCell = dest;
         EnDeplacement = true;
         t = 0;
@@ -94,14 +93,13 @@ public class Armee : MonoBehaviour
             {
                 transform.position = destination;
                 EnDeplacement = false;
-                Main.Instance.VerifyEndTurnEnabled();
             }
         }
     }
 
     public void PrepareToAttackCell(HexCell cell)
     {
-        if (!cell.IsTarget() && !HexGrid.Instance.AreAdjacent(currentCell, cell))
+        if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
         {
             var cells = HexGrid.Instance.GetAlliedAdjacentCell(cell);
             for (byte i = 0; i < cells.Count; ++i)
@@ -125,6 +123,7 @@ public class Armee : MonoBehaviour
         {
             targetCell = null;
             AttackArrow.HideArrow();
+
             return;
         }
         Fighting = true;
@@ -158,7 +157,6 @@ public class Armee : MonoBehaviour
             {
                 // counter attack success
                 EnemyAI.Instance.CounterAttackSuccess();
-                Main.Instance.VerifyEndTurnEnabled();
             }
             else
             {
@@ -168,8 +166,10 @@ public class Armee : MonoBehaviour
                 InitierDeplacement(TargetCell);
             }
         }
+
         TargetCell = null;
         Fighting = false;
+
     }
 
     public bool IsFighting()

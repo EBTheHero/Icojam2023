@@ -59,6 +59,7 @@ public class Main : MonoBehaviour
         PlayerTurn = false;
         SelectedArmee = null;
 
+        DisableEndTurn();
         StartCoroutine(PlayerAttack());
     }
 
@@ -75,13 +76,8 @@ public class Main : MonoBehaviour
         endTurnButton.interactable = false;
     }
 
-    public void VerifyEndTurnEnabled()
+    public void EnableEndTurn()
     {
-        foreach (Armee a in Armies)
-        {
-            if (a.EnDeplacement)
-                return;
-        }
         endTurnButton.interactable = true;
     }
 
@@ -97,6 +93,7 @@ public class Main : MonoBehaviour
         }
         EnemyAI.Instance.AttemptAttack();
         EnemyAI.Instance.PickCell();
+        Main.Instance.EnableEndTurn();
         foreach (var arme in Armies)
         {
             if (arme.CurrentCell.Owner == Force.Enemy)
