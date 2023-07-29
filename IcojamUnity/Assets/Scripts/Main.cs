@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static HexCell;
 
 public class Main : MonoBehaviour
@@ -9,6 +10,7 @@ public class Main : MonoBehaviour
     public List<Armee> Armies = new List<Armee>();
 
     private Armee selectedArmee;
+    [SerializeField] private Button endTurnButton;
 
     public HexCell HomeCell;
     public HexCell EnemyHomeCell;
@@ -46,12 +48,6 @@ public class Main : MonoBehaviour
             Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void EndTurn()
     {
         PlayerTurn = false;
@@ -73,5 +69,15 @@ public class Main : MonoBehaviour
         {
             cell.ShowCoords = !cell.ShowCoords;
         }
+    }
+
+    public void DisableEndTurn()
+    {
+        endTurnButton.interactable = false;
+    }
+
+    public void EnableEndTurn()
+    {
+        endTurnButton.interactable = true;
     }
 }

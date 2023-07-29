@@ -10,6 +10,7 @@ public class Armee : MonoBehaviour
     [SerializeField] private Vector3Int startingCell;
 
     public bool EnDeplacement { get; private set; } = false;
+    public bool Fighting { get; private set; } = false;
     private bool used;
 
     public bool Used
@@ -47,8 +48,12 @@ public class Armee : MonoBehaviour
         currentCell = HexGrid.Instance.GetCell(startingCell.x, startingCell.y, startingCell.z);
     }
 
-    public bool Combattre(byte scoreABattre)
+    public void Combattre(byte scoreABattre)
     {
+        if (EnDeplacement || Fighting)
+            return;
+        Fighting = true;
+        Main.Instance.DisableEndTurn();
         byte score1 = DE[Random.Range(0, 6)];
         byte score2 = 0;
         byte score3 = 0;
@@ -59,11 +64,11 @@ public class Armee : MonoBehaviour
         bool victory = (score1 + score2 + score3) >= scoreABattre;
         canvas.enabled = true;
         canvasArmee.Animate(score1, score2, score3, victory);
-        return victory;
     }
 
     public void InitierDeplacement(HexCell dest)
     {
+        Main.Instance.DisableEndTurn();
         currentCell = dest;
         EnDeplacement = true;
         t = 0;
@@ -89,13 +94,15 @@ public class Armee : MonoBehaviour
                 EnDeplacement = false;
                 if (TargetCell != null)
                     Combattre(TargetCell.TileToughness);
+                else
+                    Main.Instance.EnableEndTurn();
             }
         }
     }
 
     public void ReadyToAttackCell(HexCell cell)
     {
-        if (Used || !Main.Instance.PlayerTurn)
+        if (Used || !Main.Instance.PlayerTurn || EnDeplacement || Fighting)
             return;
         TargetCell = cell;
 
@@ -151,6 +158,8 @@ public class Armee : MonoBehaviour
         }
         TargetCell = null;
         Used = true;
+        Fighting = false;
+        Main.Instance.EnableEndTurn();
         Main.Instance.SelectedArmee = null;
     }
 
