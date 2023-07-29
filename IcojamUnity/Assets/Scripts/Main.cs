@@ -1,4 +1,5 @@
 using UnityEngine;
+using static HexCell;
 
 public class Main : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class Main : MonoBehaviour
 
     public HexCell HomeCell;
     public HexCell EnemyHomeCell;
+
+    public HexCell GetHome(Force force)
+    {
+        if (force == Force.Enemy)
+            return EnemyHomeCell;
+        else
+            return HomeCell;
+    }
 
     public int Difficulty = 11;
     public float TileDistanceMultiplicatior = 0.5f;

@@ -94,6 +94,25 @@ public class HexCell : MonoBehaviour
 					Main.Instance.SelectedArmee.ReadyToAttackCell(this);
 			}
 		}
+
+		//path testing
+
+		//var path = AStarPathfinding.FindPath(Main.Instance.HomeCell, this, Force.Player);
+		//HexGrid.Instance.RefreshVisuals();
+		//foreach (var item in path)
+		//{
+		//	item.spriteRenderer.color = Color.gray;
+		//}
+
+		//path = AStarPathfinding.FindPath(Main.Instance.HomeCell, this, Force.Player, true);
+
+		//foreach (var item in path)
+		//{
+		//	item.spriteRenderer.color = new Color(item.spriteRenderer.color.r, 1, item.spriteRenderer.color.b);
+		//}
+
+
+
 	}
 
 	public enum Force
