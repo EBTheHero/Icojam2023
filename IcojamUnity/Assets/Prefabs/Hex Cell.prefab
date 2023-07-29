@@ -52,6 +52,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1611352856648218258}
   PlayerColor: {r: 0, g: 0.24022293, b: 1, a: 1}
   EnemyColor: {r: 1, g: 0, b: 0, a: 1}
+  RockColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   HighlightColor: {r: 0.4056604, g: 0.37283087, b: 0.16647385, a: 1}
   textMeshPro: {fileID: 2748651918317008320}
   TileToughness: 5
