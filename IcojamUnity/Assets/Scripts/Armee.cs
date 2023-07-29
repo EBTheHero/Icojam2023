@@ -9,6 +9,8 @@ public class Armee : MonoBehaviour
     [SerializeField] private byte nbDes = 0;
     [SerializeField] private Vector3Int startingCell;
 
+    public Animator animator;
+
     public bool EnDeplacement { get; private set; } = false;
     private bool used;
 
@@ -49,6 +51,7 @@ public class Armee : MonoBehaviour
 
     public bool Combattre(byte scoreABattre)
     {
+        animator.SetBool("ifAttack", true);
         byte score1 = DE[Random.Range(0, 6)];
         byte score2 = 0;
         byte score3 = 0;
@@ -135,6 +138,7 @@ public class Armee : MonoBehaviour
     public void ResolveCombat(bool victory)
     {
         canvas.enabled = false;
+        animator.SetBool("ifAttack", false);
         if (victory)
         {
             if (TargetCell == EnemyAI.Instance.AttackingCell)
