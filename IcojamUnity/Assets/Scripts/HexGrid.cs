@@ -13,6 +13,7 @@ public class HexGrid : MonoBehaviour
 	HexCell[,,] cells;
 	public List<HexCell> cellsList = new List<HexCell>();
 
+
 	public static HexGrid Instance;
 
 	void Start()
@@ -42,7 +43,10 @@ public class HexGrid : MonoBehaviour
 		}
 	}
 
-
+	public List<HexCell> GetOwnerCells(HexCell.Force force)
+	{
+		return cellsList.Where(x => x.Owner == force).ToList();
+	}
 
 	void CreateCell(int x, int z, int i)
 	{
@@ -83,7 +87,8 @@ public class HexGrid : MonoBehaviour
 		foreach (var item in cellsList)
 		{
 
-			if (item.AdjacentCells.All(x => x.Owner != item.Owner))
+			var path = AStarPathfinding.FindPath(item, Main.Instance.GetHome(item.Owner), item.Owner);
+			if (path.Count <= 0)
 			{
 				// Tile is circled!
 				switch (item.Owner)

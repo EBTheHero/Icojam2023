@@ -13,7 +13,7 @@ public static class AStarPathfinding
 	/// </summary>
 	/// <param name="startPoint">Start tile.</param>
 	/// <param name="endPoint">Destination tile.</param>
-	public static List<HexCell> FindPath(HexCell startPoint, HexCell endPoint, Force asForce)
+	public static List<HexCell> FindPath(HexCell startPoint, HexCell endPoint, Force asForce, bool worsePath = false)
 	{
 		List<HexCell> openPathTiles = new List<HexCell>();
 		List<HexCell> closedPathTiles = new List<HexCell>();
@@ -30,7 +30,10 @@ public static class AStarPathfinding
 		while (openPathTiles.Count != 0)
 		{
 			// Sorting the open list to get the tile with the lowest F.
-			openPathTiles = openPathTiles.OrderBy(x => x.F).ThenByDescending(x => x.g).ToList();
+			if (!worsePath)
+				openPathTiles = openPathTiles.OrderBy(x => x.F).ThenByDescending(x => x.g).ToList();
+			else
+				openPathTiles = openPathTiles.OrderByDescending(x => x.F).ThenBy(x => x.g).ToList();
 			currentTile = openPathTiles[0];
 
 			// Removing the current tile from the open list and adding it to the closed list.
