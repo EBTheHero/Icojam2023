@@ -4,6 +4,7 @@ using UnityEngine;
 public class Armee : MonoBehaviour
 {
     public const float DUREE_DEPLACEMENT = 1f;
+    public const float MOVE_SPEED = 4f;
     public static readonly byte[] DE = new byte[6] { 0, 2, 3, 4, 5, 10 };
 
     [SerializeField] private byte nbDes = 0;
@@ -23,6 +24,8 @@ public class Armee : MonoBehaviour
     public Animation OccupiedAnimation;
     private HexCell currentCell;
     private HexCell targetCell;
+
+    List<HexCell> path;
 
     public HexCell TargetCell
     {
@@ -72,11 +75,11 @@ public class Armee : MonoBehaviour
 
     public void InitierDeplacement(HexCell dest)
     {
+        path = AStarPathfinding.FindPath(currentCell, dest, HexCell.Force.Player);
+
         currentCell = dest;
         EnDeplacement = true;
-        t = 0;
-        posDepart = transform.position;
-        destination = dest.transform.position;
+        GoNextCell();
 
         foreach (var item in Main.Instance.Armies)
         {
@@ -85,16 +88,30 @@ public class Armee : MonoBehaviour
         }
     }
 
+    public void GoNextCell()
+    {
+        path.RemoveAt(0);
+        if (path.Count > 0)
+            destination = path[0].transform.position;
+
+    }
+
     private void Update()
     {
         if (EnDeplacement)
         {
-            t += Time.deltaTime;
-            transform.position = Vector2.Lerp(posDepart, destination, t / DUREE_DEPLACEMENT);
-            if (t >= DUREE_DEPLACEMENT)
+            transform.position = Vector2.MoveTowards(transform.position, destination, MOVE_SPEED * Time.deltaTime);
+            if (transform.position == (Vector3)destination)
             {
-                transform.position = destination;
-                EnDeplacement = false;
+                if (path.Count > 0)
+                {
+                    GoNextCell();
+                }
+                else
+                {
+                    transform.position = destination;
+                    EnDeplacement = false;
+                }
             }
         }
     }
