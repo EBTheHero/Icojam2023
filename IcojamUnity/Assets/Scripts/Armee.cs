@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Armee : MonoBehaviour
@@ -19,6 +20,7 @@ public class Armee : MonoBehaviour
     private Vector2 destination = new Vector2();
     private Canvas canvas;
     private CanvasArmee canvasArmee;
+    public Animation OccupiedAnimation;
     private HexCell currentCell;
     private HexCell targetCell;
 
@@ -102,15 +104,24 @@ public class Armee : MonoBehaviour
         if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
         {
             var cells = HexGrid.Instance.GetAlliedAdjacentCell(cell);
+            var occupyingArmies = new List<Armee>();
             for (byte i = 0; i < cells.Count; ++i)
             {
-                if (cells[i].IsOccupied() == null)
+                Armee occupying = cells[i].IsOccupied();
+                if (occupying == null)
                 {
                     TargetCell = cell;
                     InitierDeplacement(cells[i]);
                     return;
                 }
+                else
+                {
+                    occupyingArmies.Add(occupying);
+                }
             }
+            // All tiles occupied
+            foreach (var army in occupyingArmies)
+                army.PlayOccupied();
             // TODO: Gérer l'impossibilité de se positionner sur la cellule.
         }
         else
@@ -186,5 +197,11 @@ public class Armee : MonoBehaviour
             if (surroundingTiles != null && surroundingTiles.Count > 0)
                 InitierDeplacement(surroundingTiles[0]);
         }
+    }
+
+    public void PlayOccupied()
+    {
+        OccupiedAnimation.Play();
+
     }
 }
