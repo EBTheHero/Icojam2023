@@ -10,7 +10,18 @@ public class Armee : MonoBehaviour
     [SerializeField] private Vector3Int startingCell;
 
     public bool EnDeplacement { get; private set; } = false;
-    public bool Used { get; set; }
+    private bool used;
+
+    public bool Used
+    {
+        get { return used; }
+        set
+        {
+            used = value;
+            spriteRenderer.color = value ? Color.gray : Color.white;
+        }
+    }
+
 
     private float t = 0f;
     private Vector2 posDepart = new Vector2();
@@ -92,13 +103,13 @@ public class Armee : MonoBehaviour
         else
         {
             if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
-            {
                 nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
-                InitierDeplacement(nearbyCell);
-            }
+            else
+                nearbyCell = currentCell;
+
         }
 
-
+        InitierDeplacement(nearbyCell);
     }
 
     void OnMouseDown()

@@ -21,7 +21,7 @@ public class HexGrid : MonoBehaviour
 		if (Instance == null)
 			Instance = this;
 
-		cells = new HexCell[100, 100, 100];
+		cells = new HexCell[20, 20, 20];
 
 		for (int z = 0, i = 0; z < height; z++)
 		{
@@ -111,12 +111,12 @@ public class HexGrid : MonoBehaviour
 
 	public void StoreCell(HexCell cell)
 	{
-		cells[cell.coordinates.X + 50, cell.coordinates.Y + 50, cell.coordinates.Z + 50] = cell;
+		cells[cell.coordinates.X + 10, cell.coordinates.Y + 10, cell.coordinates.Z + 10] = cell;
 	}
 
 	public HexCell GetCell(int x, int y, int z)
 	{
-		return cells[x + 50, y + 50, z + 50];
+		return cells[x + 10, y + 10, z + 10];
 	}
 
 	public HexCell GetTopLeftCell(HexCell hexCell)

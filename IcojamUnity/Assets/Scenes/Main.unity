@@ -525,7 +525,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282bee05cca3a5248bee0783af86e1ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Armies: []
+  Armies:
+  - {fileID: 350926728}
+  - {fileID: 1241233983}
+  - {fileID: 237597471}
   HomeCell: {fileID: 0}
   EnemyHomeCell: {fileID: 0}
   Difficulty: 11
@@ -560,6 +563,17 @@ MonoBehaviour:
   AttackingCell: {fileID: 0}
   AttackedCell: {fileID: 0}
   Arrow: {fileID: 267398702}
+--- !u!114 &237597471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
+  m_PrefabInstance: {fileID: 977615789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc3e664443e9e49be31115a8c107f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &267398702
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +924,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348354664}
   m_CullTransparentMesh: 1
+--- !u!114 &350926728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
+  m_PrefabInstance: {fileID: 720892355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc3e664443e9e49be31115a8c107f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419002293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,11 +1508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6457236839761424316, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.893
       objectReference: {fileID: 0}
     - target: {fileID: 6457236839761424316, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.305
       objectReference: {fileID: 0}
     - target: {fileID: 6457236839761424316, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1534,16 +1559,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
-      propertyPath: spriteRenderer
-      value: 
-      objectReference: {fileID: 267398703}
-    - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.x
-      value: -5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.y
-      value: 5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8098464828101713913, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1777,11 +1798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.x
-      value: -3
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.y
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 8098464828101713913, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1928,6 +1949,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142565245}
   m_CullTransparentMesh: 1
+--- !u!114 &1241233983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
+  m_PrefabInstance: {fileID: 2070013150}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92dc3e664443e9e49be31115a8c107f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1243989002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,11 +2179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.x
-      value: -4
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7589515461782321665, guid: 57b657128744e644d8558d142697822c, type: 3}
       propertyPath: startingCell.y
-      value: 4
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
