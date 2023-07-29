@@ -58,10 +58,13 @@ public class CanvasArmee : MonoBehaviour
         }
         resultPanel.color = victory ? Color.green : Color.red;
         resultPanel.text = (score1 + score2 + score3).ToString();
+        if (victory)
+            SoundManager.Play("391540__unlistenable__electro-success-sound");
+        else
+            SoundManager.Play("173958__leszek_szary__failure");
 
         anim.Play();
         yield return new WaitForSeconds(RESULT_DISPLAY_LENGTH);
-
         army.ResolveCombat(victory);
         resultPanel.text = "?";
         resultPanel.color = Color.white;

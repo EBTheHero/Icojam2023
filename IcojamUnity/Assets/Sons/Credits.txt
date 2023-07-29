@@ -1,2 +1,4 @@
 466133__humanoide9000__victory-fanfare:		https://freesound.org/people/humanoide9000/sounds/466133/
 475246__aurea__military-snaredrum:		https://freesound.org/people/aUREa/sounds/475246/
+173958__leszek_szary__failure:			https://freesound.org/people/Leszek_Szary/sounds/173958/
+391540__unlistenable__electro-success-sound:	https://freesound.org/people/Unlistenable/sounds/391540/
