@@ -156,7 +156,7 @@ public class HexCell : MonoBehaviour
 			}
 			UpdateVisuals();
 		}
-		else if (GameObject.Find("DevRock").GetComponent<Toggle>().isOn)
+		else if (GameObject.Find("DevRock") != null && GameObject.Find("DevRock").GetComponent<Toggle>().isOn)
 		{
 			owner = Force.NoOne;
 			UpdateVisuals();
