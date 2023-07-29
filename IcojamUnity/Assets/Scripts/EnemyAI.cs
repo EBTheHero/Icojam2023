@@ -9,6 +9,8 @@ public class EnemyAI : MonoBehaviour
 
 	public Arrow attackArrow;
 
+	HexCell lastPickedAttackedCell;
+
 	public static EnemyAI Instance;
 	// Start is called before the first frame update
 	void Awake()
@@ -41,10 +43,17 @@ public class EnemyAI : MonoBehaviour
 		if (HexGrid.Instance.GetEnemyAdjacentCell(Main.Instance.HomeCell).Count > 0)
 		{
 			// HOME VULNERABLE
-			AttackedCell = Main.Instance.HomeCell;
-			AttackingCell = FindBestAttackingCell(AttackedCell);
-			Debug.Log("AI strat: Attack home");
-			foundGoodStrat = true;
+			if (lastPickedAttackedCell != Main.Instance.HomeCell)
+			{
+				AttackedCell = Main.Instance.HomeCell;
+				AttackingCell = FindBestAttackingCell(AttackedCell);
+				Debug.Log("AI strat: Attack home");
+				foundGoodStrat = true;
+			}
+			else
+			{
+				Debug.Log("AI: Attack player home strat skipped");
+			}
 		}
 
 		if (!foundGoodStrat)
@@ -53,7 +62,11 @@ public class EnemyAI : MonoBehaviour
 
 			// find candidates
 			var potentialCandidates = new List<HexCell>();
-			foreach (var item in HexGrid.Instance.GetOwnerCells(HexCell.Force.Player))
+			List<HexCell> playerCells = HexGrid.Instance.GetOwnerCells(HexCell.Force.Player);
+			if (lastPickedAttackedCell != null)
+				playerCells.Remove(lastPickedAttackedCell);
+
+			foreach (var item in playerCells)
 			{
 				var vulnerableCells = GetSingleCuttable(item);
 
@@ -96,15 +109,33 @@ public class EnemyAI : MonoBehaviour
 			{
 				var path = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
 				if (path.Count > 0)
-					results.Add((path.Count, item, path[1]));
+				{
+					var cellToAttack = path[1];
+					if (cellToAttack != lastPickedAttackedCell && cellToAttack.Owner == HexCell.Force.Player)
+						results.Add((path.Count, item, cellToAttack));
+					else
+					{
+						// attempt a different direction
+						var pathWorse = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks, true);
+						cellToAttack = pathWorse[1];
+						if (cellToAttack != lastPickedAttackedCell && cellToAttack.Owner == HexCell.Force.Player)
+							results.Add((path.Count, item, cellToAttack));
+					}
+				}
 			}
 
 			AttackingCell = results.OrderBy(x => x.Item1).First().Item2;
 			AttackedCell = results.OrderBy(x => x.Item1).First().Item3;
 
+
+			foundGoodStrat = true;
 			Debug.Log("AI strat: Attack closest cell to player home");
 		}
 
+		if (!foundGoodStrat)
+			lastPickedAttackedCell = null;
+		else
+			lastPickedAttackedCell = AttackedCell;
 		attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
 
 	}
