@@ -30,7 +30,7 @@ public class DiceAnimation : MonoBehaviour
         Sprite s;
         do
         {
-            s = diceSprites[Random.Range(0, 5)];
+            s = diceSprites[Random.Range(0, 6)];
         } while (s == image.sprite);
         image.sprite = s;
     }
