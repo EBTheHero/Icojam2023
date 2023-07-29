@@ -93,23 +93,18 @@ public class Armee : MonoBehaviour
             return;
         TargetCell = cell;
 
-        HexCell nearbyCell = null;
         if (cell == EnemyAI.Instance.AttackingCell)
         {
             // Counter attack!
-            nearbyCell = EnemyAI.Instance.AttackedCell;
-            InitierDeplacement(nearbyCell);
-        }
-        else
-        {
-            if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
-                nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
+            if (currentCell == EnemyAI.Instance.AttackedCell)
+                Combattre(cell.TileToughness);
             else
-                nearbyCell = currentCell;
-
+                InitierDeplacement(EnemyAI.Instance.AttackedCell);
         }
-
-        InitierDeplacement(nearbyCell);
+        else if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
+            InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(cell).First());
+        else
+            Combattre(cell.TileToughness);
     }
 
     void OnMouseDown()

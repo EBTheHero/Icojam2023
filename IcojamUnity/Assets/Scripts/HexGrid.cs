@@ -98,6 +98,8 @@ public class HexGrid : MonoBehaviour
 						break;
 					case HexCell.Force.Enemy:
 						item.Owner = HexCell.Force.Player;
+						if (EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
+							EnemyAI.Instance.CounterAttackSuccess();
 						break;
 					case HexCell.Force.NoOne:
 						break;
