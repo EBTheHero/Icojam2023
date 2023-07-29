@@ -16,7 +16,7 @@ public class DiceAnimation : MonoBehaviour
 
     public void StartAnimation()
     {
-        InvokeRepeating("Animate", 0.2f, 0.2f);
+        InvokeRepeating("Animate", 0.1f, 0.1f);
     }
 
     public void StopAnimation(byte score)

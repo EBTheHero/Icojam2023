@@ -119,6 +119,8 @@ public class Armee : MonoBehaviour
 
     public void AttackCell()
     {
+        if(targetCell.Owner != HexCell.Force.Enemy)
+            targetCell = null;
         Fighting = true;
         animator.SetBool("ifAttack", true);
         Combattre(TargetCell.TileToughness);
