@@ -127,7 +127,7 @@ public class Armee : MonoBehaviour
         }
         else
         {
-            spriteRenderer.color = Color.white;
+            spriteRenderer.color = used ? Color.gray : Color.white;
         }
     }
 
