@@ -156,6 +156,11 @@ public class HexCell : MonoBehaviour
 			}
 			UpdateVisuals();
 		}
+		else if (GameObject.Find("DevRock").GetComponent<Toggle>().isOn)
+		{
+			owner = Force.NoOne;
+			UpdateVisuals();
+		}
 		else
 		{
 			if (Main.Instance.SelectedArmee != null)
