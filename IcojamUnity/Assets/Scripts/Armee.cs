@@ -9,7 +9,7 @@ public class Armee : MonoBehaviour
     [SerializeField] private Vector3Int startingCell;
 
     public Animator animator;
-
+    public Arrow AttackArrow;
     public bool EnDeplacement { get; private set; } = false;
     public bool Fighting { get; private set; } = false;
 
@@ -30,7 +30,12 @@ public class Armee : MonoBehaviour
                 targetCell.spriteRenderer.color = targetCell.Owner == HexCell.Force.Player ? targetCell.spriteRenderer.color = Color.blue : targetCell.spriteRenderer.color = Color.red;
             targetCell = value;
             if (targetCell != null)
+            {
                 targetCell.spriteRenderer.color = Color.yellow;
+                AttackArrow.UpdateArrow(transform, targetCell.transform);
+            }
+            else
+                AttackArrow.HideArrow();
         }
     }
 

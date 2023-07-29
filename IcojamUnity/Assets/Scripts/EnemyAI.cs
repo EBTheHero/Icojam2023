@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
 	public HexCell AttackingCell;
 	public HexCell AttackedCell;
 
-	public GameObject Arrow;
+	public Arrow attackArrow;
 
 	public static EnemyAI Instance;
 	// Start is called before the first frame update
@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
 		AttackedCell = null;
 		AttackingCell = null;
 
-		Arrow.transform.position = new Vector2(-1000, -1000);
+		attackArrow.HideArrow();
 	}
 
 	public void PickCell()
@@ -105,7 +105,8 @@ public class EnemyAI : MonoBehaviour
 			Debug.Log("AI strat: Attack closest cell to player home");
 		}
 
-		UpdateArrow();
+		attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
+
 	}
 
 	public HexCell FindBestAttackingCell(HexCell attackedCell)
@@ -115,12 +116,6 @@ public class EnemyAI : MonoBehaviour
 			return attackingCells.OrderByDescending(item => item.TileToughness).First();
 		else
 			return null;
-	}
-
-	void UpdateArrow()
-	{
-		Arrow.transform.position = Vector2.MoveTowards(AttackingCell.transform.position, AttackedCell.transform.position, HexMetrics.outerRadius);
-		Arrow.transform.rotation = Quaternion.LookRotation(Vector3.forward, AttackedCell.transform.position - AttackingCell.transform.position);
 	}
 
 	List<HexCell> GetVulnerableCuttableCells(HexCell hexCell)
