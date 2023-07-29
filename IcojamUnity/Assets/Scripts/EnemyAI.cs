@@ -17,12 +17,6 @@ public class EnemyAI : MonoBehaviour
 			Instance = this;
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	public void AttemptAttack()
 	{
 		if (AttackingCell != null)
