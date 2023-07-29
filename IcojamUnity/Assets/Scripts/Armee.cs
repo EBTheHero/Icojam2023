@@ -90,7 +90,8 @@ public class Armee : MonoBehaviour
         }
         else
         {
-            nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
+            if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
+                nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
         }
 
         InitierDeplacement(nearbyCell);
