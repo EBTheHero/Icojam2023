@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static HexCell;
@@ -92,13 +92,13 @@ public class Main : MonoBehaviour
         {
             if (arme.TargetCell != null)
             {
-                arme.ReadyToAttackCell();
+                arme.AttackCell();
                 yield return new WaitWhile(arme.IsFighting);
             }
         }
         EnemyAI.Instance.AttemptAttack();
         EnemyAI.Instance.PickCell();
-        foreach(var arme in Armies)
+        foreach (var arme in Armies)
         {
             if (arme.CurrentCell.Owner == Force.Enemy)
                 arme.InitierDeplacement(HomeCell);

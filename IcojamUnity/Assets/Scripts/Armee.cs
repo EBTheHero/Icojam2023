@@ -117,7 +117,7 @@ public class Armee : MonoBehaviour
             TargetCell = cell;
     }
 
-    public void ReadyToAttackCell()
+    public void AttackCell()
     {
         Fighting = true;
         animator.SetBool("ifAttack", true);
