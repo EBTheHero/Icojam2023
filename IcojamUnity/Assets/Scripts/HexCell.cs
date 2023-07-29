@@ -155,10 +155,16 @@ public class HexCell : MonoBehaviour
 		}
 		else
 		{
-			if (Main.Instance.SelectedArmee != null && Owner == Force.Enemy)
+			if (Main.Instance.SelectedArmee != null)
 			{
-				if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
+
+				if (Owner == Force.Enemy && HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
 					Main.Instance.SelectedArmee.PrepareToAttackCell(this);
+				else if (Owner == Force.Player && !IsOccupied())
+				{
+					Main.Instance.SelectedArmee.InitierDeplacement(this);
+					Main.Instance.SelectedArmee.TargetCell = null;
+				}
 			}
 		}
 
@@ -180,14 +186,14 @@ public class HexCell : MonoBehaviour
 	}
 
 	public Armee IsOccupied()
-    {
-		for(byte i = 0; i < Main.Instance.Armies.Count; ++i)
-        {
+	{
+		for (byte i = 0; i < Main.Instance.Armies.Count; ++i)
+		{
 			if (Main.Instance.Armies[i].CurrentCell == this)
 				return Main.Instance.Armies[i];
-        }
+		}
 		return null;
-    }
+	}
 
 	public bool IsTarget()
 	{
