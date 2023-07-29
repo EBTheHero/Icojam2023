@@ -97,15 +97,15 @@ public class Armee : MonoBehaviour
 
     public void PrepareToAttackCell(HexCell cell)
     {
-        TargetCell = cell;
-        if (!HexGrid.Instance.AreAdjacent(currentCell, TargetCell))
+        if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
         {
-            var cells = HexGrid.Instance.GetAlliedAdjacentCell(TargetCell);
+            var cells = HexGrid.Instance.GetAlliedAdjacentCell(cell);
             for(byte i = 0; i < cells.Count; ++i)
             {
                 if (cells[i].IsOccupied() == null)
                 {
-                    InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(TargetCell).First());
+                    TargetCell = cell;
+                    InitierDeplacement(cells[i]);
                     return;
                 }
             }
