@@ -76,7 +76,7 @@ public class Main : MonoBehaviour
 
     public void VerifyEndTurnEnabled()
     {
-        foreach(Armee a in Armies)
+        foreach (Armee a in Armies)
         {
             if (a.EnDeplacement)
                 return;
@@ -91,7 +91,22 @@ public class Main : MonoBehaviour
             arme.ReadyToAttackCell();
             yield return new WaitWhile(arme.IsFighting);
         }
-        EnemyAI.Instance.PickCell();
         EnemyAI.Instance.AttemptAttack();
+        EnemyAI.Instance.PickCell();
+        foreach(var arme in Armies)
+        {
+            if (arme.CurrentCell.Owner == Force.Enemy)
+                arme.InitierDeplacement(HomeCell);
+        }
+    }
+
+    public void Win()
+    {
+        WinUI.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        LoseUI.SetActive(true);
     }
 }

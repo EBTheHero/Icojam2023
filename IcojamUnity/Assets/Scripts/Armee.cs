@@ -32,6 +32,8 @@ public class Armee : MonoBehaviour
         } 
     }
 
+    public HexCell CurrentCell { get => currentCell; }
+
     public SpriteRenderer spriteRenderer;
 
     private void Awake()
