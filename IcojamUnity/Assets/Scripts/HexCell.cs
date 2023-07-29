@@ -10,12 +10,15 @@ public class HexCell : MonoBehaviour
 
 	public Color PlayerColor;
 	public Color EnemyColor;
+	public Color RockColor;
 	public Color HighlightColor;
 
 	public TMPro.TextMeshProUGUI textMeshPro;
 
 	public byte TileToughness = 5;
 	private bool showCoords;
+
+	public bool IsHome => this == Main.Instance.EnemyHomeCell || this == Main.Instance.HomeCell;
 
 	public bool ShowCoords
 	{
@@ -79,11 +82,24 @@ public class HexCell : MonoBehaviour
 				// LOSE
 				Main.Instance.Lose();
 			}
-			else
+			else if (value == Force.Enemy || value == Force.Player)
 				HexGrid.Instance.CheckForCircledTiles();
 
 		}
 	}
+
+	/// <summary>
+	/// When you want to set the owner without checking for win condition or circling
+	/// </summary>
+	public Force OwnerNoCall
+	{
+		get => owner; set
+		{
+
+			owner = value;
+		}
+	}
+
 
 	public void UpdateVisuals()
 	{
@@ -92,7 +108,20 @@ public class HexCell : MonoBehaviour
 		else if (Main.Instance.EnemyHomeCell != this)
 			textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
 
-		spriteRenderer.color = Owner == Force.Player ? PlayerColor : EnemyColor;
+		switch (Owner)
+		{
+			case Force.Player:
+				spriteRenderer.color = PlayerColor;
+				break;
+			case Force.Enemy:
+				spriteRenderer.color = EnemyColor;
+				break;
+			case Force.NoOne:
+				spriteRenderer.color = RockColor;
+				break;
+			default:
+				break;
+		}
 	}
 
 	public void InitStats()
@@ -164,6 +193,7 @@ public class HexCell : MonoBehaviour
 	{
 		Player,
 		Enemy,
-		NoOne
+		NoOne,
+		OnlyRocks
 	}
 }

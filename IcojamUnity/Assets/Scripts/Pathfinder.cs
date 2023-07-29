@@ -52,7 +52,13 @@ public static class AStarPathfinding
 			foreach (HexCell adjacentTile in currentTile.AdjacentCells)
 			{
 				// Ignore not walkable adjacent tiles.
-				if (!(asForce == Force.NoOne || adjacentTile.Owner == asForce))
+				if (asForce == Force.OnlyRocks)
+				{
+					// We're checking for paths regardless of owner. Only ignoring rocks
+					if (adjacentTile.Owner == Force.NoOne)
+						continue;
+				}
+				else if (!(asForce == Force.NoOne || adjacentTile.Owner == asForce))
 				{
 					continue;
 				}

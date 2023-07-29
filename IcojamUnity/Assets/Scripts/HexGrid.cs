@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -21,6 +21,18 @@ public class HexGrid : MonoBehaviour
 		if (Instance == null)
 			Instance = this;
 
+		GeneratePlayField();
+
+	}
+
+	public void GeneratePlayField()
+	{
+		if (cellsList != null && cellsList.Count > 0)
+			foreach (var cell in cellsList)
+				Destroy(cell.gameObject);
+
+		cellsList.Clear();
+
 		cells = new HexCell[20, 20, 20];
 
 		for (int z = 0, i = 0; z < height; z++)
@@ -32,14 +44,41 @@ public class HexGrid : MonoBehaviour
 		}
 
 		foreach (var item in cells)
-		{
-
 			if (item != null)
-			{
 				cellsList.Add(item);
-				item.InitStats();
-				item.UpdateVisuals();
+
+		// Rock Generation
+		for (int i = 0; i < Main.Instance.NumberOfRocks; i++)
+		{
+			HexCell sourceRock = null;
+			while (sourceRock == null)
+			{
+				var randomPick = cellsList[Random.Range(0, cellsList.Count)];
+				if (CellValidForRockification(randomPick))
+					sourceRock = randomPick;
 			}
+
+			sourceRock.Owner = HexCell.Force.NoOne;
+
+			var currentRockSnake = sourceRock;
+
+			for (int x = 0; x < Main.Instance.RockSize - 1; x++)
+			{
+				var pickableRocks = GetEnemyAdjacentCell(currentRockSnake);
+				pickableRocks = pickableRocks.Where(c => CellValidForRockification(c)).ToList();
+				if (pickableRocks.Count == 0)
+					break;
+				var newRock = pickableRocks[Random.Range(0, pickableRocks.Count)];
+				newRock.Owner = HexCell.Force.NoOne;
+				currentRockSnake = newRock;
+			}
+		}
+
+
+		foreach (var item in cellsList)
+		{
+			item.InitStats();
+			item.UpdateVisuals();
 		}
 	}
 
@@ -103,8 +142,16 @@ public class HexGrid : MonoBehaviour
 						item.Owner = HexCell.Force.Enemy;
 						break;
 					case HexCell.Force.Enemy:
+
+
 						item.Owner = HexCell.Force.Player;
-						if (EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
+						var secondTest = AStarPathfinding.FindPath(item, Main.Instance.GetHome(item.Owner), item.Owner);
+						if (secondTest.Count <= 0)
+						{
+							// This tile is secluded from both forces. Become rock
+							item.Owner = HexCell.Force.NoOne;
+						}
+						else if (EnemyAI.Instance.AttackingCell != null && EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
 							EnemyAI.Instance.CounterAttackSuccess();
 						break;
 					case HexCell.Force.NoOne:
@@ -214,5 +261,26 @@ public class HexGrid : MonoBehaviour
 			if (item != null)
 				item.UpdateVisuals();
 		}
+	}
+
+	public bool CellValidForRockification(HexCell cell)
+	{
+		if (cell.Owner == HexCell.Force.Enemy && !cell.IsHome)
+		{
+			// Check if making this cell a rock would prevent a playable game
+			var force = cell.Owner;
+			cell.OwnerNoCall = HexCell.Force.NoOne;
+
+			var path = AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
+
+			cell.OwnerNoCall = force;
+
+			// return true if there's a path.
+			if (path.Count == 0)
+				Debug.Log("A rock failed rockification due to pathfinding");
+			return path.Count >= 1;
+		}
+		else
+			return false;
 	}
 }

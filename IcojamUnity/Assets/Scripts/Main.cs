@@ -26,6 +26,8 @@ public class Main : MonoBehaviour
 
     public int Difficulty = 11;
     public float TileDistanceMultiplicatior = 0.5f;
+    public int NumberOfRocks = 1;
+    public int RockSize = 1;
     public bool PlayerTurn { get; private set; } = true;
 
     public GameObject WinUI;
