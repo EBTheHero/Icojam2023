@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceSprites:
-  - {fileID: 21300000, guid: 0ff6025038b7a234699ebc7fca15fd22, type: 3}
+  - {fileID: 21300000, guid: c10d44a04135a1142878debf9fe6857f, type: 3}
   - {fileID: 21300000, guid: b65d2e3455dee884cb7e47e73d04e244, type: 3}
   - {fileID: 21300000, guid: d8b2dbef68eda794ab0a08ba6336cb6d, type: 3}
   - {fileID: 21300000, guid: fe96477f2c8d49749a1a4e5bf5f1734e, type: 3}
   - {fileID: 21300000, guid: fe6dfec049e92b346b79e7c9c42e2c6e, type: 3}
-  - {fileID: 21300000, guid: 7ed1d12027313934ea026bceeb7866cf, type: 3}
+  - {fileID: 21300000, guid: c20bf43419dd4d845a478abe0d0305f2, type: 3}
