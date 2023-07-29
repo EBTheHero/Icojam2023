@@ -27,6 +27,9 @@ public class Main : MonoBehaviour
     public float TileDistanceMultiplicatior = 0.5f;
     public bool PlayerTurn { get; private set; } = true;
 
+    public GameObject WinUI;
+    public GameObject LoseUI;
+
     public Armee SelectedArmee
     {
         get { return selectedArmee; }
@@ -79,5 +82,15 @@ public class Main : MonoBehaviour
     public void EnableEndTurn()
     {
         endTurnButton.interactable = true;
+    }
+
+    public void Win()
+    {
+        WinUI.SetActive(true);
+    }
+
+    public void Lose()
+    {
+        LoseUI.SetActive(true);
     }
 }

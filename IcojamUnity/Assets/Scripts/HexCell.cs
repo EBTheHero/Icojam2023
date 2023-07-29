@@ -62,7 +62,28 @@ public class HexCell : MonoBehaviour
 
 	}
 
-	public Force Owner { get => owner; set { owner = value; HexGrid.Instance.CheckForCircledTiles(); } }
+	public Force Owner
+	{
+		get => owner; set
+		{
+
+			owner = value;
+
+			if (value == Force.Player && Main.Instance.EnemyHomeCell == this)
+			{
+				// WIN
+				Main.Instance.Win();
+			}
+			else if (value == Force.Enemy && Main.Instance.HomeCell == this)
+			{
+				// LOSE
+				Main.Instance.Lose();
+			}
+			else
+				HexGrid.Instance.CheckForCircledTiles();
+
+		}
+	}
 
 	public void UpdateVisuals()
 	{
