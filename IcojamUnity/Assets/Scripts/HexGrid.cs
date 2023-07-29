@@ -16,7 +16,7 @@ public class HexGrid : MonoBehaviour
 
 	public static HexGrid Instance;
 
-	void Start()
+	void Awake()
 	{
 		if (Instance == null)
 			Instance = this;
