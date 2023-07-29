@@ -68,7 +68,7 @@ public class HexCell : MonoBehaviour
 	{
 		if (showCoords)
 			textMeshPro.text = coordinates.ToString();
-		else
+		else if (Main.Instance.EnemyHomeCell != this)
 			textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
 
 		spriteRenderer.color = Owner == Force.Player ? PlayerColor : EnemyColor;
