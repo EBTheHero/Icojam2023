@@ -150,5 +150,6 @@ public class Armee : MonoBehaviour
         }
         TargetCell = null;
         Used = true;
+        Main.Instance.SelectedArmee = null;
     }
 }
