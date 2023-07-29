@@ -74,6 +74,8 @@ public class HexGrid : MonoBehaviour
 			}
 		}
 
+		CheckForCircledTiles();
+
 
 		foreach (var item in cellsList)
 		{
@@ -144,15 +146,20 @@ public class HexGrid : MonoBehaviour
 					case HexCell.Force.Enemy:
 
 
-						item.Owner = HexCell.Force.Player;
-						var secondTest = AStarPathfinding.FindPath(item, Main.Instance.GetHome(item.Owner), item.Owner);
+
+						var secondTest = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
 						if (secondTest.Count <= 0)
 						{
 							// This tile is secluded from both forces. Become rock
-							item.Owner = HexCell.Force.NoOne;
+							item.OwnerNoCall = HexCell.Force.NoOne;
 						}
-						else if (EnemyAI.Instance.AttackingCell != null && EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
-							EnemyAI.Instance.CounterAttackSuccess();
+						else
+						{
+							item.OwnerNoCall = HexCell.Force.Player;
+							if (EnemyAI.Instance.AttackingCell != null && EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
+								EnemyAI.Instance.CounterAttackSuccess();
+						}
+
 						break;
 					case HexCell.Force.NoOne:
 						break;
