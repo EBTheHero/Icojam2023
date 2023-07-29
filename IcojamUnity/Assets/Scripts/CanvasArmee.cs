@@ -50,6 +50,7 @@ public class CanvasArmee : MonoBehaviour
 
     private IEnumerator Resolve(byte score1, byte score2, byte score3, bool victory)
     {
+        SoundManager.Play("268324__mrauralization__dice-roll");
         yield return new WaitForSeconds(ANIMATION_LENGTH);
 
         for (byte i = 0; i < dicePanels.Length; ++i)

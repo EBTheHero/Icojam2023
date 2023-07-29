@@ -800,6 +800,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc07de0f67896bd4c8e4c03066b37178, type: 3}
   - {fileID: 8300000, guid: fb056076f53e65145aef16fb124f6b4b, type: 3}
   - {fileID: 8300000, guid: 942d2ec45dc2e054fbdd3442c8a5e799, type: 3}
+  - {fileID: 8300000, guid: e542de8e81acd2341a5ebbed3d0463f9, type: 3}
 --- !u!82 &161288878
 AudioSource:
   m_ObjectHideFlags: 0
