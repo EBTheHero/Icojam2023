@@ -107,7 +107,7 @@ public class Armee : MonoBehaviour
         if (Used || !Main.Instance.PlayerTurn || EnDeplacement || Fighting)
             return;
         TargetCell = cell;
-
+        animator.SetBool("ifAttack", true);
         if (cell == EnemyAI.Instance.AttackingCell)
         {
             // Counter attack!
