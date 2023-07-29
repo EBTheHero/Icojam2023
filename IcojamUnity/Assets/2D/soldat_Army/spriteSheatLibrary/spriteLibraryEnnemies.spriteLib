@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: iddle
+    m_Hash: 487215349
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: EnnemiesSpriteSheetVersion02_0
+      m_Hash: 407936383
+      m_Sprite: {fileID: -493931987, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -493931987, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_1
+      m_Hash: 794275305
+      m_Sprite: {fileID: 1109114970, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1109114970, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_2
+      m_Hash: 912194643
+      m_Sprite: {fileID: -910435307, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -910435307, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_3
+      m_Hash: 22662341
+      m_Sprite: {fileID: -948565338, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -948565338, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_4
+      m_Hash: 524114278
+      m_Sprite: {fileID: 715028722, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 715028722, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_5
+      m_Hash: 674916848
+      m_Sprite: {fileID: -1644688268, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1644688268, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_6
+      m_Hash: 825440330
+      m_Sprite: {fileID: 748141820, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 748141820, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 7
+  - m_Name: death
+    m_Hash: 659019054
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: EnnemiesSpriteSheetVersion02_0
+      m_Hash: 407936383
+      m_Sprite: {fileID: -493931987, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -493931987, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_7
+      m_Hash: 104073436
+      m_Sprite: {fileID: -1207892014, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1207892014, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_8
+      m_Hash: 378213709
+      m_Sprite: {fileID: 2053102149, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2053102149, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_9
+      m_Hash: 562832859
+      m_Sprite: {fileID: -1525369045, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1525369045, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    - m_Name: EnnemiesSpriteSheetVersion02_10
+      m_Hash: 769839696
+      m_Sprite: {fileID: -1215520732, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1215520732, guid: 070815ea703459a40b31dd572b2ddcaa, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638261812820660704
+  m_Version: 1
