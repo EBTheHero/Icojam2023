@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class Armee : MonoBehaviour
@@ -23,13 +22,16 @@ public class Armee : MonoBehaviour
     private HexCell currentCell;
     private HexCell targetCell;
 
-    public HexCell TargetCell { get => targetCell; set {
-            if(targetCell != null)
+    public HexCell TargetCell
+    {
+        get => targetCell; set
+        {
+            if (targetCell != null)
                 targetCell.spriteRenderer.color = targetCell.Owner == HexCell.Force.Player ? targetCell.spriteRenderer.color = Color.blue : targetCell.spriteRenderer.color = Color.red;
             targetCell = value;
-            if(targetCell != null)
+            if (targetCell != null)
                 targetCell.spriteRenderer.color = Color.yellow;
-        } 
+        }
     }
 
     public HexCell CurrentCell { get => currentCell; }
@@ -119,16 +121,7 @@ public class Armee : MonoBehaviour
     {
         Fighting = true;
         animator.SetBool("ifAttack", true);
-        if (TargetCell == EnemyAI.Instance.AttackingCell)
-        {
-            // Counter attack!
-            if (currentCell == EnemyAI.Instance.AttackedCell)
-                Combattre(TargetCell.TileToughness);
-            else
-                InitierDeplacement(EnemyAI.Instance.AttackedCell);
-        }
-        else
-            Combattre(TargetCell.TileToughness);
+        Combattre(TargetCell.TileToughness);
     }
 
     void OnMouseDown()
