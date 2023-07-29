@@ -54,5 +54,15 @@ public class Main : MonoBehaviour
     public void EndTurn()
     {
         PlayerTurn = false;
+        EnemyAI.Instance.AttemptAttack();
+
+        foreach (var arme in Armies)
+        {
+            arme.Used = false;
+        }
+
+        EnemyAI.Instance.PickCell();
+
+        PlayerTurn = true;
     }
 }

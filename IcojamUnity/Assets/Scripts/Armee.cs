@@ -81,13 +81,19 @@ public class Armee : MonoBehaviour
         if (Used || !Main.Instance.PlayerTurn)
             return;
         TargetCell = cell;
-        if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
+
+        HexCell nearbyCell = null;
+        if (cell == EnemyAI.Instance.AttackingCell)
         {
-            var nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
-            InitierDeplacement(nearbyCell);
+            // Counter attack!
+            nearbyCell = EnemyAI.Instance.AttackedCell;
         }
         else
-            Combattre(TargetCell.TileToughness);
+        {
+            nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
+        }
+
+        InitierDeplacement(nearbyCell);
     }
 
     void OnMouseDown()
@@ -112,11 +118,19 @@ public class Armee : MonoBehaviour
     public void ResolveCombat(bool victory)
     {
         canvas.enabled = false;
-        if(victory)
+        if (victory)
         {
-            TargetCell.Owner = HexCell.Force.Player;
-            TargetCell.UpdateVisuals();
-            InitierDeplacement(TargetCell);
+            if (TargetCell == EnemyAI.Instance.AttackingCell)
+            {
+                // counter attack success
+                EnemyAI.Instance.CounterAttackSuccess();
+            }
+            else
+            {
+                TargetCell.Owner = HexCell.Force.Player;
+                TargetCell.UpdateVisuals();
+                InitierDeplacement(TargetCell);
+            }
         }
         TargetCell = null;
         Used = true;
