@@ -49,13 +49,13 @@ public class Armee : MonoBehaviour
 
     public bool Combattre(byte scoreABattre)
     {
-        byte score1 = DE[Random.Range(0, 5)];
+        byte score1 = DE[Random.Range(0, 6)];
         byte score2 = 0;
         byte score3 = 0;
         if (nbDes > 1)
-            score2 = DE[Random.Range(0, 5)];
+            score2 = DE[Random.Range(0, 6)];
         if (nbDes == 3)
-            score3 = DE[Random.Range(0, 5)];
+            score3 = DE[Random.Range(0, 6)];
         bool victory = (score1 + score2 + score3) >= scoreABattre;
         canvas.enabled = true;
         canvasArmee.Animate(score1, score2, score3, victory);
