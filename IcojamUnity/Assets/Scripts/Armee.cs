@@ -99,7 +99,7 @@ public class Armee : MonoBehaviour
 
     public void PrepareToAttackCell(HexCell cell)
     {
-        if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
+        if (!cell.IsTarget() && !HexGrid.Instance.AreAdjacent(currentCell, cell))
         {
             var cells = HexGrid.Instance.GetAlliedAdjacentCell(cell);
             for (byte i = 0; i < cells.Count; ++i)

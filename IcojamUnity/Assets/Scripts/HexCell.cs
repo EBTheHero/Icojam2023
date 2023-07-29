@@ -189,6 +189,16 @@ public class HexCell : MonoBehaviour
 		return null;
     }
 
+	public bool IsTarget()
+	{
+		for (byte i = 0; i < Main.Instance.Armies.Count; ++i)
+		{
+			if (Main.Instance.Armies[i].TargetCell == this)
+				return true;
+		}
+		return false;
+	}
+
 	public enum Force
 	{
 		Player,
