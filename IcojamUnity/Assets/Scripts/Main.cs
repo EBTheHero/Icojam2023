@@ -28,6 +28,9 @@ public class Main : MonoBehaviour
     public float TileDistanceMultiplicatior = 0.5f;
     public bool PlayerTurn { get; private set; } = true;
 
+    public GameObject WinUI;
+    public GameObject LoseUI;
+
     public Armee SelectedArmee
     {
         get { return selectedArmee; }
