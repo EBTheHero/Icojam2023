@@ -142,6 +142,7 @@ public class HexGrid : MonoBehaviour
 				{
 					case HexCell.Force.Player:
 						item.Owner = HexCell.Force.Enemy;
+						item.PlaySurrounded();
 						break;
 					case HexCell.Force.Enemy:
 
@@ -156,6 +157,7 @@ public class HexGrid : MonoBehaviour
 						else
 						{
 							item.OwnerNoCall = HexCell.Force.Player;
+							item.PlaySurrounded();
 							if (EnemyAI.Instance.AttackingCell != null && EnemyAI.Instance.AttackingCell == item) // Circled the attacking tile
 								EnemyAI.Instance.CounterAttackSuccess();
 						}

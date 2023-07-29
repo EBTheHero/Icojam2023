@@ -15,6 +15,9 @@ public class HexCell : MonoBehaviour
 
 	public TMPro.TextMeshProUGUI textMeshPro;
 
+	public ParticleSystem SurroundParticle;
+	public int AmountParticle = 15;
+
 	public byte TileToughness = 5;
 	private bool showCoords;
 
@@ -203,6 +206,11 @@ public class HexCell : MonoBehaviour
 				return true;
 		}
 		return false;
+	}
+
+	public void PlaySurrounded()
+	{
+		SurroundParticle.Emit(AmountParticle);
 	}
 
 	public enum Force
