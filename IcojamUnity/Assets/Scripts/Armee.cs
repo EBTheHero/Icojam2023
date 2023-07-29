@@ -127,7 +127,7 @@ public class Armee : MonoBehaviour
         }
         else
         {
-            spriteRenderer.color = Color.white;
+            spriteRenderer.color = used ? Color.gray : Color.white;
         }
     }
 
@@ -150,5 +150,6 @@ public class Armee : MonoBehaviour
         }
         TargetCell = null;
         Used = true;
+        Main.Instance.SelectedArmee = null;
     }
 }
