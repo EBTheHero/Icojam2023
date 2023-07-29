@@ -148,10 +148,17 @@ public class HexCell : MonoBehaviour
 		//{
 		//	item.spriteRenderer.color = new Color(item.spriteRenderer.color.r, 1, item.spriteRenderer.color.b);
 		//}
-
-
-
 	}
+
+	public Armee IsOccupied()
+    {
+		for(byte i = 0; i < Main.Instance.Armies.Count; ++i)
+        {
+			if (Main.Instance.Armies[i].CurrentCell == this)
+				return Main.Instance.Armies[i];
+        }
+		return null;
+    }
 
 	public enum Force
 	{

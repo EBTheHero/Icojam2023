@@ -99,7 +99,18 @@ public class Armee : MonoBehaviour
     {
         TargetCell = cell;
         if (!HexGrid.Instance.AreAdjacent(currentCell, TargetCell))
-            InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(TargetCell).First());
+        {
+            var cells = HexGrid.Instance.GetAlliedAdjacentCell(TargetCell);
+            for(byte i = 0; i < cells.Count; ++i)
+            {
+                if (cells[i].IsOccupied() == null)
+                {
+                    InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(TargetCell).First());
+                    return;
+                }
+            }
+            // TODO: Gérer l'impossibilité de se positionner sur la cellule.
+        }
     }
 
     public void ReadyToAttackCell()
