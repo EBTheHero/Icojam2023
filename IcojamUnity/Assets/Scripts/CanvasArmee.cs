@@ -37,11 +37,8 @@ public class CanvasArmee : MonoBehaviour
                 Instantiate(plusPrefab, dicePanelGroup.transform);
             dicePanels[i] = Instantiate(dicePanelPrefab, dicePanelGroup.transform).GetComponent<Image>();
         }
-        if (nbDes > 1)
-        {
-            Instantiate(equalsPrefab, dicePanelGroup.transform);
-            resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<TextMeshProUGUI>();
-        }
+        Instantiate(equalsPrefab, dicePanelGroup.transform);
+        resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<TextMeshProUGUI>();
     }
 
     public void Animate(byte score1, byte score2, byte score3, bool victory)
@@ -59,21 +56,14 @@ public class CanvasArmee : MonoBehaviour
         {
             dicePanels[i].GetComponent<DiceAnimation>().StopAnimation(i == 0 ? score1 : i == 1 ? score2 : score3);
         }
-
-        if (resultPanel != null)
-        {
-            resultPanel.color = victory ? Color.green : Color.red;
-            resultPanel.text = (score1 + score2 + score3).ToString();
-        }
+        resultPanel.color = victory ? Color.green : Color.red;
+        resultPanel.text = (score1 + score2 + score3).ToString();
 
         anim.Play();
         yield return new WaitForSeconds(RESULT_DISPLAY_LENGTH);
 
         army.ResolveCombat(victory);
-        if (resultPanel != null)
-        {
-            resultPanel.text = "?";
-            resultPanel.color = Color.white;
-        }
+        resultPanel.text = "?";
+        resultPanel.color = Color.white;
     }
 }

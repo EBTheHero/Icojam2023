@@ -7,6 +7,7 @@ public class Armee : MonoBehaviour
     public static readonly byte[] DE = new byte[6] { 0, 2, 3, 4, 5, 10 };
 
     [SerializeField] private byte nbDes = 0;
+    [SerializeField] private Vector3Int startingCell;
 
     public bool EnDeplacement { get; private set; } = false;
     public bool Used { get; set; }
@@ -16,6 +17,7 @@ public class Armee : MonoBehaviour
     private Vector2 destination = new Vector2();
     private Canvas canvas;
     private CanvasArmee canvasArmee;
+    private HexCell currentCell;
 
     [System.NonSerialized] public HexCell TargetCell;
 
@@ -27,6 +29,11 @@ public class Armee : MonoBehaviour
         canvas.worldCamera = Camera.main;
         canvasArmee = canvas.GetComponent<CanvasArmee>();
         canvasArmee.Init(nbDes);
+    }
+
+    private void Start()
+    {
+        currentCell = HexGrid.Instance.GetCell(startingCell.x, startingCell.y, startingCell.z);
     }
 
     public bool Combattre(byte scoreABattre)
@@ -44,12 +51,13 @@ public class Armee : MonoBehaviour
         return victory;
     }
 
-    public void InitierDeplacement(Vector2 dest)
+    public void InitierDeplacement(HexCell dest)
     {
+        currentCell = dest;
         EnDeplacement = true;
         t = 0;
         posDepart = transform.position;
-        destination = dest;
+        destination = dest.transform.position;
     }
 
     private void Update()
@@ -73,8 +81,13 @@ public class Armee : MonoBehaviour
         if (Used || !Main.Instance.PlayerTurn)
             return;
         TargetCell = cell;
-        var nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
-        InitierDeplacement(nearbyCell.transform.position);
+        if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
+        {
+            var nearbyCell = HexGrid.Instance.GetAlliedAdjacentCell(cell).First();
+            InitierDeplacement(nearbyCell);
+        }
+        else
+            Combattre(TargetCell.TileToughness);
     }
 
     void OnMouseDown()
@@ -103,7 +116,7 @@ public class Armee : MonoBehaviour
         {
             TargetCell.Owner = HexCell.Force.Player;
             TargetCell.UpdateVisuals();
-            InitierDeplacement(TargetCell.transform.position);
+            InitierDeplacement(TargetCell);
         }
         TargetCell = null;
         Used = true;
