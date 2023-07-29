@@ -13,17 +13,6 @@ public class Armee : MonoBehaviour
 
     public bool EnDeplacement { get; private set; } = false;
     public bool Fighting { get; private set; } = false;
-    private bool used;
-
-    public bool Used
-    {
-        get { return used; }
-        set
-        {
-            used = value;
-            spriteRenderer.color = value ? Color.gray : Color.white;
-        }
-    }
 
 
     private float t = 0f;
@@ -32,8 +21,16 @@ public class Armee : MonoBehaviour
     private Canvas canvas;
     private CanvasArmee canvasArmee;
     private HexCell currentCell;
+    private HexCell targetCell;
 
-    [System.NonSerialized] public HexCell TargetCell;
+    public HexCell TargetCell { get => targetCell; set {
+            if(targetCell != null)
+                targetCell.spriteRenderer.color = targetCell.Owner == HexCell.Force.Player ? targetCell.spriteRenderer.color = Color.blue : targetCell.spriteRenderer.color = Color.red;
+            targetCell = value;
+            if(targetCell != null)
+                targetCell.spriteRenderer.color = Color.yellow;
+        } 
+    }
 
     public SpriteRenderer spriteRenderer;
 
@@ -52,9 +49,6 @@ public class Armee : MonoBehaviour
 
     public void Combattre(byte scoreABattre)
     {
-        if (EnDeplacement || Fighting)
-            return;
-        Fighting = true;
         Main.Instance.DisableEndTurn();
         byte score1 = DE[Random.Range(0, 6)];
         byte score2 = 0;
@@ -94,38 +88,36 @@ public class Armee : MonoBehaviour
             {
                 transform.position = destination;
                 EnDeplacement = false;
-                if (TargetCell != null)
-                    Combattre(TargetCell.TileToughness);
-                else
-                    Main.Instance.EnableEndTurn();
+                Main.Instance.VerifyEndTurnEnabled();
             }
         }
     }
 
-    public void ReadyToAttackCell(HexCell cell)
+    public void PrepareToAttackCell(HexCell cell)
     {
-        if (Used || !Main.Instance.PlayerTurn || EnDeplacement || Fighting)
-            return;
         TargetCell = cell;
+        if (!HexGrid.Instance.AreAdjacent(currentCell, TargetCell))
+            InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(TargetCell).First());
+    }
+
+    public void ReadyToAttackCell()
+    {
+        Fighting = true;
         animator.SetBool("ifAttack", true);
-        if (cell == EnemyAI.Instance.AttackingCell)
+        if (TargetCell == EnemyAI.Instance.AttackingCell)
         {
             // Counter attack!
             if (currentCell == EnemyAI.Instance.AttackedCell)
-                Combattre(cell.TileToughness);
+                Combattre(TargetCell.TileToughness);
             else
                 InitierDeplacement(EnemyAI.Instance.AttackedCell);
         }
-        else if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
-            InitierDeplacement(HexGrid.Instance.GetAlliedAdjacentCell(cell).First());
         else
-            Combattre(cell.TileToughness);
+            Combattre(TargetCell.TileToughness);
     }
 
     void OnMouseDown()
     {
-        if (Used || !Main.Instance.PlayerTurn)
-            return;
         Main.Instance.SelectedArmee = this;
     }
 
@@ -136,9 +128,7 @@ public class Armee : MonoBehaviour
             spriteRenderer.color = Color.yellow;
         }
         else
-        {
-            spriteRenderer.color = used ? Color.gray : Color.white;
-        }
+            spriteRenderer.color = Color.white;
     }
 
     public void ResolveCombat(bool victory)
@@ -160,10 +150,12 @@ public class Armee : MonoBehaviour
             }
         }
         TargetCell = null;
-        Used = true;
         Fighting = false;
-        Main.Instance.EnableEndTurn();
-        Main.Instance.SelectedArmee = null;
+    }
+
+    public bool IsFighting()
+    {
+        return Fighting;
     }
 
     public void MoveOutOfTheWayOfCell(HexCell cell)

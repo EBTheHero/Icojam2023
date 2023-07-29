@@ -108,7 +108,7 @@ public class HexCell : MonoBehaviour
 			if (Main.Instance.SelectedArmee != null && Owner == Force.Enemy)
 			{
 				if (HexGrid.Instance.GetAlliedAdjacentCell(this).Count > 0)
-					Main.Instance.SelectedArmee.ReadyToAttackCell(this);
+					Main.Instance.SelectedArmee.PrepareToAttackCell(this);
 			}
 		}
 

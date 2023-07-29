@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using static HexCell;
@@ -51,15 +52,9 @@ public class Main : MonoBehaviour
     public void EndTurn()
     {
         PlayerTurn = false;
-        EnemyAI.Instance.AttemptAttack();
+        SelectedArmee = null;
 
-        foreach (var arme in Armies)
-        {
-            arme.Used = false;
-        }
-
-        EnemyAI.Instance.PickCell();
-
+        StartCoroutine(PlayerAttack());
         PlayerTurn = true;
     }
 
@@ -76,8 +71,24 @@ public class Main : MonoBehaviour
         endTurnButton.interactable = false;
     }
 
-    public void EnableEndTurn()
+    public void VerifyEndTurnEnabled()
     {
+        foreach(Armee a in Armies)
+        {
+            if (a.EnDeplacement)
+                return;
+        }
         endTurnButton.interactable = true;
+    }
+
+    private IEnumerator PlayerAttack()
+    {
+        foreach (var arme in Armies)
+        {
+            arme.ReadyToAttackCell();
+            yield return new WaitWhile(arme.IsFighting);
+        }
+        EnemyAI.Instance.PickCell();
+        EnemyAI.Instance.AttemptAttack();
     }
 }
