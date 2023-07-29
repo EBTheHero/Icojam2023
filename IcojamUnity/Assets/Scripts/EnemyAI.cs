@@ -94,7 +94,7 @@ public class EnemyAI : MonoBehaviour
 			var results = new List<(int, HexCell, HexCell)>();
 			foreach (var item in HexGrid.Instance.GetOwnerCells(HexCell.Force.Enemy))
 			{
-				var path = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.NoOne);
+				var path = AStarPathfinding.FindPath(item, Main.Instance.HomeCell, HexCell.Force.OnlyRocks);
 				if (path.Count > 0)
 					results.Add((path.Count, item, path[1]));
 			}
