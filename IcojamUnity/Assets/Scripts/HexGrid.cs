@@ -73,6 +73,12 @@ public class HexGrid : MonoBehaviour
 		else
 			cell.Owner = HexCell.Force.Enemy;
 
+		if (cell.coordinates == new HexCoordinates(3, 1))
+			cell.Owner = HexCell.Force.Player;
+
+		if (cell.coordinates == new HexCoordinates(4, 1))
+			cell.Owner = HexCell.Force.Player;
+
 		if (cell.coordinates == new HexCoordinates(4, 0))
 			Main.Instance.HomeCell = cell;
 
