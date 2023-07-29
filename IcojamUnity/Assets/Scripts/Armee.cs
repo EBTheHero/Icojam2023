@@ -26,12 +26,9 @@ public class Armee : MonoBehaviour
     {
         get => targetCell; set
         {
-            if (targetCell != null)
-                targetCell.spriteRenderer.color = targetCell.Owner == HexCell.Force.Player ? targetCell.spriteRenderer.color = Color.blue : targetCell.spriteRenderer.color = Color.red;
             targetCell = value;
             if (targetCell != null)
             {
-                targetCell.spriteRenderer.color = Color.yellow;
                 AttackArrow.UpdateArrow(transform, targetCell.transform);
             }
             else
@@ -124,8 +121,12 @@ public class Armee : MonoBehaviour
 
     public void AttackCell()
     {
-        if(targetCell.Owner != HexCell.Force.Enemy)
+        if (targetCell.Owner != HexCell.Force.Enemy)
+        {
             targetCell = null;
+            AttackArrow.HideArrow();
+            return;
+        }
         Fighting = true;
         animator.SetBool("ifAttack", true);
         Combattre(TargetCell.TileToughness);
@@ -133,7 +134,8 @@ public class Armee : MonoBehaviour
 
     void OnMouseDown()
     {
-        Main.Instance.SelectedArmee = this;
+        if (Main.Instance.PlayerTurn)
+            Main.Instance.SelectedArmee = this;
     }
 
     public void SetSelected(bool selected)

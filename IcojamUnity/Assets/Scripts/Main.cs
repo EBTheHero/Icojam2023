@@ -60,7 +60,6 @@ public class Main : MonoBehaviour
         SelectedArmee = null;
 
         StartCoroutine(PlayerAttack());
-        PlayerTurn = true;
     }
 
     public void ToggleCoords()
@@ -103,6 +102,7 @@ public class Main : MonoBehaviour
             if (arme.CurrentCell.Owner == Force.Enemy)
                 arme.InitierDeplacement(HomeCell);
         }
+        PlayerTurn = true;
     }
 
     public void Win()
