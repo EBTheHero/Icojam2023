@@ -90,8 +90,11 @@ public class Main : MonoBehaviour
     {
         foreach (var arme in Armies)
         {
-            arme.ReadyToAttackCell();
-            yield return new WaitWhile(arme.IsFighting);
+            if (arme.TargetCell != null)
+            {
+                arme.ReadyToAttackCell();
+                yield return new WaitWhile(arme.IsFighting);
+            }
         }
         EnemyAI.Instance.AttemptAttack();
         EnemyAI.Instance.PickCell();

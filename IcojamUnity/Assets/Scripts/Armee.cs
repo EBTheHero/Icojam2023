@@ -100,7 +100,7 @@ public class Armee : MonoBehaviour
         if (!HexGrid.Instance.AreAdjacent(currentCell, cell))
         {
             var cells = HexGrid.Instance.GetAlliedAdjacentCell(cell);
-            for(byte i = 0; i < cells.Count; ++i)
+            for (byte i = 0; i < cells.Count; ++i)
             {
                 if (cells[i].IsOccupied() == null)
                 {
@@ -111,6 +111,8 @@ public class Armee : MonoBehaviour
             }
             // TODO: Gérer l'impossibilité de se positionner sur la cellule.
         }
+        else
+            TargetCell = cell;
     }
 
     public void ReadyToAttackCell()
