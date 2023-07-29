@@ -164,6 +164,7 @@ public class Armee : MonoBehaviour
             {
                 TargetCell.Owner = HexCell.Force.Player;
                 TargetCell.UpdateVisuals();
+                SoundManager.Play("475246__aurea__military-snaredrum");
                 InitierDeplacement(TargetCell);
             }
         }
