@@ -15,7 +15,20 @@ public class HexCell : MonoBehaviour
 	public TMPro.TextMeshProUGUI textMeshPro;
 
 	public byte TileToughness = 5;
+	private bool showCoords;
 
+	public bool ShowCoords
+	{
+		get { return showCoords; }
+		set
+		{
+			showCoords = value;
+			UpdateVisuals();
+		}
+	}
+
+
+	#region
 	/// <summary>
 	/// Sum of G and H.
 	/// </summary>
@@ -32,6 +45,8 @@ public class HexCell : MonoBehaviour
 	public int h;
 
 	private List<HexCell> adjacentTiles;
+
+	#endregion
 
 	public List<HexCell> AdjacentCells
 	{
@@ -51,8 +66,10 @@ public class HexCell : MonoBehaviour
 
 	public void UpdateVisuals()
 	{
-		//textMeshPro.text = coordinates.ToString();
-		textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
+		if (showCoords)
+			textMeshPro.text = coordinates.ToString();
+		else
+			textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
 
 		spriteRenderer.color = Owner == Force.Player ? PlayerColor : EnemyColor;
 	}

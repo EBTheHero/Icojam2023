@@ -66,4 +66,12 @@ public class Main : MonoBehaviour
 
         PlayerTurn = true;
     }
+
+    public void ToggleCoords()
+    {
+        foreach (var cell in HexGrid.Instance.cellsList)
+        {
+            cell.ShowCoords = !cell.ShowCoords;
+        }
+    }
 }
