@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour
 		AttackedCell = null;
 		AttackingCell = null;
 
+		attackArrow.Pop();
 		attackArrow.HideArrow();
 		enemyArmy.transform.position = armyResetPos;
 		enemyArmy.SetBool("death", true);
