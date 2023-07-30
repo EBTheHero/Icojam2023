@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyArmy : MonoBehaviour
 {
 	public bool EnDeplacement = false;
-	public const float MOVE_SPEED = 3f;
+	public const float MOVE_SPEED = 1.7f;
 
 	Vector2 destination;
 	List<HexCell> path;
