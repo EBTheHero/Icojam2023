@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5470984809530827023}
   - component: {fileID: 3185735837749637610}
   - component: {fileID: 7036755242821371939}
+  - component: {fileID: 7657128201727901616}
   m_Layer: 0
   m_Name: Simple_explosion (1)
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.22, y: -2.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,3 +139,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 13691eb8213c8b4478d20db2395799cd, type: 3}
+--- !u!114 &7657128201727901616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424900036422237039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afbd50d2534864a469ce3ef5ea506f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
