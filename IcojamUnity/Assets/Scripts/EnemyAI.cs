@@ -1,13 +1,25 @@
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.U2D.Animation;
 
 public class EnemyAI : MonoBehaviour
 {
-	[System.NonSerialized] public HexCell AttackingCell;
 	[System.NonSerialized] public HexCell AttackedCell;
+
+	private HexCell attackingCell;
+
+	public HexCell AttackingCell
+	{
+		get { return attackingCell; }
+		set
+		{
+			if (attackingCell != null)
+				attackingCell.SetFadeAnim(false);
+			attackingCell = value;
+			if (attackingCell != null)
+				attackingCell.SetFadeAnim(true);
+		}
+	}
 
 	public Arrow attackArrow;
 	public Animator enemyArmy;
@@ -22,9 +34,9 @@ public class EnemyAI : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-            armyResetPos = enemyArmy.transform.position;
+			armyResetPos = enemyArmy.transform.position;
 		}
-    }
+	}
 
 	public void AttemptAttack()
 	{
@@ -219,8 +231,8 @@ public class EnemyAI : MonoBehaviour
 	}
 
 	public void CheckIfArmyDead(HexCell cell)
-    {
+	{
 		if (cell == AttackingCell)
 			enemyArmy.SetBool("death", true);
-    }
+	}
 }

@@ -33,6 +33,8 @@ public class HexCell : MonoBehaviour
 		}
 	}
 
+	public Animator TextAnimator;
+
 
 	#region
 	/// <summary>
@@ -216,6 +218,11 @@ public class HexCell : MonoBehaviour
 	public void PlaySurrounded()
 	{
 		SurroundParticle.Emit(AmountParticle);
+	}
+
+	public void SetFadeAnim(bool value)
+	{
+		TextAnimator.SetBool("Fade", value);
 	}
 
 	public enum Force
