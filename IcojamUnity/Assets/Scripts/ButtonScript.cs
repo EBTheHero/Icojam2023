@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ButtonScript : MonoBehaviour
 {
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
-        
+        SoundManager.Play("glitch_004");
     }
 }
