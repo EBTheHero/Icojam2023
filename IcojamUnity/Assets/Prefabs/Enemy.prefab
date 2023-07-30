@@ -151,4 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba53695d96f7b84a912b80620b26a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Moving: 0
+  EnDeplacement: 0
+  startingCell: {x: 0, y: 0, z: 0}
