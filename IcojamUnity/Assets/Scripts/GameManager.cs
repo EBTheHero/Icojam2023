@@ -6,14 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 #if UNITY_EDITOR
-    private bool devMode = true;
+    public bool DevMode = true;
 #else
-    private bool devMode = false;
+    public bool DevMode = false;
 #endif
     
-    public static bool DevMode { get => Instance.devMode; set => Instance.devMode = value; }
-
-    private static GameManager Instance = null;
+    public static GameManager Instance = null;
 
     private void Awake()
     {
@@ -30,5 +28,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene("Menu");
+    }
+
+    public void SetDevMode(bool activated)
+    {
+        DevMode = activated;
     }
 }
