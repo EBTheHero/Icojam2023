@@ -31,7 +31,7 @@ public class CurrentTurnUI : MonoBehaviour
 			EnemyAttackText.fontStyle = TMPro.FontStyles.Bold;
 		}
 		else
-			EnemyAttackText.fontStyle = TMPro.FontStyles.Strikethrough;
+			EnemyAttackText.fontStyle = (TMPro.FontStyles)65;
 	}
 
 	void HideAll()
