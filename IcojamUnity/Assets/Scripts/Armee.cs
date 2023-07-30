@@ -22,6 +22,7 @@ public class Armee : MonoBehaviour
     private Canvas canvas;
     private CanvasArmee canvasArmee;
     public Animation OccupiedAnimation;
+    public Animation RepelledAnimation;
     private HexCell currentCell;
     private HexCell targetCell;
 
@@ -193,6 +194,7 @@ public class Armee : MonoBehaviour
             {
                 // counter attack success
                 EnemyAI.Instance.CounterAttackSuccess();
+                PlayRepelled();
             }
             else
             {
@@ -227,5 +229,10 @@ public class Armee : MonoBehaviour
     public void PlayOccupied()
     {
         OccupiedAnimation.Play();
+    }
+
+    public void PlayRepelled()
+    {
+        RepelledAnimation.Play();
     }
 }
