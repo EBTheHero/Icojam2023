@@ -141,7 +141,7 @@ public class HexGrid : MonoBehaviour
 				switch (item.Owner)
 				{
 					case HexCell.Force.Player:
-						item.Owner = HexCell.Force.Enemy;
+						item.OwnerNoCall = HexCell.Force.Enemy;
 						item.PlaySurrounded();
 						break;
 					case HexCell.Force.Enemy:

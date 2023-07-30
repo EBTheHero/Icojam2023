@@ -77,8 +77,12 @@ public class Armee : MonoBehaviour
     {
         path = AStarPathfinding.FindPath(currentCell, dest, HexCell.Force.Player);
 
+        if (path.Count == 0)
+            path = AStarPathfinding.FindPath(currentCell, dest, HexCell.Force.OnlyRocks);
+
         currentCell = dest;
         EnDeplacement = true;
+
         GoNextCell();
 
         foreach (var item in Main.Instance.Armies)
@@ -139,7 +143,7 @@ public class Armee : MonoBehaviour
             // All tiles occupied
             foreach (var army in occupyingArmies)
                 army.PlayOccupied();
-            // TODO: Gérer l'impossibilité de se positionner sur la cellule.
+            // TODO: Gï¿½rer l'impossibilitï¿½ de se positionner sur la cellule.
         }
         else
             TargetCell = cell;
