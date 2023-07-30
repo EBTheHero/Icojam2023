@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Simple
+    m_Hash: 114767924
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: simpleExplosion00
+      m_Hash: 595807387
+      m_Sprite: {fileID: 21300000, guid: 0a8c323932e9f884da9efc02e4091f45, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 0a8c323932e9f884da9efc02e4091f45, type: 3}
+    - m_Name: simpleExplosion01
+      m_Hash: 344226829
+      m_Sprite: {fileID: 21300000, guid: 6a2fe28e1b1d9e048a78ea984986ecec, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 6a2fe28e1b1d9e048a78ea984986ecec, type: 3}
+    - m_Name: simpleExplosion02
+      m_Hash: 227356087
+      m_Sprite: {fileID: 21300000, guid: 8ee1b33d0fb47424fbebfa2a33345244, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 8ee1b33d0fb47424fbebfa2a33345244, type: 3}
+    - m_Name: simpleExplosion03
+      m_Hash: 982129953
+      m_Sprite: {fileID: 21300000, guid: 7fb416cc1c5a7ca4d8c0397f095d3d97, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 7fb416cc1c5a7ca4d8c0397f095d3d97, type: 3}
+    - m_Name: simpleExplosion04
+      m_Hash: 619612290
+      m_Sprite: {fileID: 21300000, guid: 7c0d9544b7efe64489b5bfc429b7e3b5, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 7c0d9544b7efe64489b5bfc429b7e3b5, type: 3}
+    - m_Name: simpleExplosion05
+      m_Hash: 334084116
+      m_Sprite: {fileID: 21300000, guid: 052258545adaf4443bbb916220e1b038, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 052258545adaf4443bbb916220e1b038, type: 3}
+    - m_Name: simpleExplosion06
+      m_Hash: 182512046
+      m_Sprite: {fileID: 21300000, guid: 7bd9dfd5e521b7649b5aa2965c533aba, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 7bd9dfd5e521b7649b5aa2965c533aba, type: 3}
+    - m_Name: simpleExplosion07
+      m_Hash: 1038604600
+      m_Sprite: {fileID: 21300000, guid: ab83e069c4c586346b5cf3f6016d7e74, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: ab83e069c4c586346b5cf3f6016d7e74, type: 3}
+    - m_Name: simpleExplosion08
+      m_Hash: 760792233
+      m_Sprite: {fileID: 21300000, guid: 457eef1ba9c3aa943b1e4c40c26c03d6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 457eef1ba9c3aa943b1e4c40c26c03d6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 9
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638262656008673523
+  m_Version: 1
