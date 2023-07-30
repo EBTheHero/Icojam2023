@@ -22,9 +22,9 @@ public class EnemyAI : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			armyResetPos = enemyArmy.transform.position;
+            armyResetPos = enemyArmy.transform.position;
 		}
-	}
+    }
 
 	public void AttemptAttack()
 	{
@@ -43,8 +43,7 @@ public class EnemyAI : MonoBehaviour
 		attackArrow.Pop();
 		attackArrow.HideArrow();
 		enemyArmy.transform.position = armyResetPos;
-		enemyArmy.SetBool("death", true);
-		StartCoroutine(DisposeOfBodies());
+		enemyArmy.SetBool("death", false);
 	}
 
 	public void PickCell()
@@ -219,10 +218,9 @@ public class EnemyAI : MonoBehaviour
 		}
 	}
 
-	private IEnumerator DisposeOfBodies()
+	public void CheckIfArmyDead(HexCell cell)
     {
-		yield return new WaitForSeconds(0.75f);
-		enemyArmy.transform.position = armyResetPos;
-		enemyArmy.SetBool("death", false);
+		if (cell == AttackingCell)
+			enemyArmy.SetBool("death", true);
     }
 }

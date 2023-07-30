@@ -19,7 +19,7 @@ public class CanvasArmee : MonoBehaviour
     private Armee army;
 
     public const float ANIMATION_LENGTH = 1.25f;
-    public const float RESULT_DISPLAY_LENGTH = 4.0f;
+    public const float RESULT_DISPLAY_LENGTH =  2.0f;
 
     private void Awake()
     {
@@ -41,14 +41,14 @@ public class CanvasArmee : MonoBehaviour
         resultPanel = Instantiate(resultPanelPrefab, dicePanelGroup.transform).GetComponent<TextMeshProUGUI>();
     }
 
-    public void Animate(byte score1, byte score2, byte score3, bool victory)
+    public void Animate(byte score1, byte score2, byte score3, bool victory, HexCell cell)
     {
         foreach (Image i in dicePanels)
             i.GetComponent<DiceAnimation>().StartAnimation();
-        StartCoroutine(Resolve(score1, score2, score3, victory));
+        StartCoroutine(Resolve(score1, score2, score3, victory, cell));
     }
 
-    private IEnumerator Resolve(byte score1, byte score2, byte score3, bool victory)
+    private IEnumerator Resolve(byte score1, byte score2, byte score3, bool victory, HexCell cell)
     {
         SoundManager.Play("268324__mrauralization__dice-roll");
         yield return new WaitForSeconds(ANIMATION_LENGTH);
@@ -60,7 +60,10 @@ public class CanvasArmee : MonoBehaviour
         resultPanel.color = victory ? Color.green : Color.red;
         resultPanel.text = (score1 + score2 + score3).ToString();
         if (victory)
+        {
             SoundManager.Play("391540__unlistenable__electro-success-sound");
+            EnemyAI.Instance.CheckIfArmyDead(cell);
+        }
         else
             SoundManager.Play("173958__leszek_szary__failure");
 

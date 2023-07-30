@@ -70,7 +70,7 @@ public class Armee : MonoBehaviour
             score3 = DE[Random.Range(0, 6)];
         bool victory = (score1 + score2 + score3) >= scoreABattre;
         canvas.enabled = true;
-        canvasArmee.Animate(score1, score2, score3, victory);
+        canvasArmee.Animate(score1, score2, score3, victory, TargetCell);
     }
 
     public void InitierDeplacement(HexCell dest)
@@ -223,6 +223,5 @@ public class Armee : MonoBehaviour
     public void PlayOccupied()
     {
         OccupiedAnimation.Play();
-
     }
 }
