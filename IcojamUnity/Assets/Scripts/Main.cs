@@ -41,6 +41,8 @@ public class Main : MonoBehaviour
             if (selectedArmee != null)
                 selectedArmee.SetSelected(false);
 
+            if (value != selectedArmee)
+                SoundManager.Play("drop_001");
             selectedArmee = value;
             if (selectedArmee != null)
                 selectedArmee.SetSelected(true);

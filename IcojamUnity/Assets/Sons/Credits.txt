@@ -4,3 +4,4 @@
 391540__unlistenable__electro-success-sound:	https://freesound.org/people/Unlistenable/sounds/391540/
 268324__mrauralization__dice-roll:		https://freesound.org/people/MrAuralization/sounds/268324/
 611789__metalfortress__jingle_level_failed:	https://freesound.org/people/metalfortress/sounds/611789/
+sword-hit-7160:					https://pixabay.com/sound-effects/sword-hit-7160/

@@ -36,6 +36,7 @@ public class Armee : MonoBehaviour
             {
                 AttackArrow.UpdateArrow(transform, targetCell.transform);
                 animator.SetBool("ifAttack", true);
+                SoundManager.Play("sword-hit-7160");
             }
             else
             {
