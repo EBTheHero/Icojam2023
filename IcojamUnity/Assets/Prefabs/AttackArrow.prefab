@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2248459969885217585}
   - component: {fileID: 5730458942373641658}
-  - component: {fileID: 4809095646619163727}
   - component: {fileID: 4768459607599594433}
   m_Layer: 0
   m_Name: AttackArrow
@@ -86,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4809095646619163727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6895743157377424330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8ef0c2711fdc640891d17418b86f44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!111 &4768459607599594433
 Animation:
   m_ObjectHideFlags: 0
@@ -159,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8ef0c2711fdc640891d17418b86f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionOBJ: {fileID: 7424900036422237039, guid: 2b28c541d1bcbb04e93a6b27947115b5, type: 3}
