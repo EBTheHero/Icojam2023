@@ -44,6 +44,7 @@ public class EnemyAI : MonoBehaviour
 		{
 			AttackedCell.Owner = HexCell.Force.Enemy;
 			AttackedCell.UpdateVisuals();
+			SoundManager.Play("back_004");
 		}
 	}
 

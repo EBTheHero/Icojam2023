@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ButtonScript : MonoBehaviour
+public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
-    private void OnMouseOver()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        print("Hey!!!");
         SoundManager.Play("glitch_004");
     }
 
-    private void OnMouseEnter()
-    {
-        print("Ho!!!");
-    }
-
-    private void OnMouseDown()
+    public void OnPointerClick(PointerEventData eventData)
     {
         SoundManager.Play("confirmation_003");
     }

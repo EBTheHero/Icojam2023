@@ -35,9 +35,14 @@ public class Armee : MonoBehaviour
             if (targetCell != null)
             {
                 AttackArrow.UpdateArrow(transform, targetCell.transform);
+                animator.SetBool("ifAttack", true);
             }
             else
+            {
                 AttackArrow.HideArrow();
+                animator.SetBool("ifAttack", false);
+            }
+            SetSelected(Main.Instance.SelectedArmee == this);
         }
     }
 
@@ -176,7 +181,7 @@ public class Armee : MonoBehaviour
             spriteRenderer.color = Color.yellow;
         }
         else
-            spriteRenderer.color = Color.white;
+            spriteRenderer.color = TargetCell == null ? Color.white : Color.green;
     }
 
     public void ResolveCombat(bool victory)
