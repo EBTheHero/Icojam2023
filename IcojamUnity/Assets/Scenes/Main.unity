@@ -4610,15 +4610,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.04585109
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.g
-      value: 0.5294118
+      value: 0.6226415
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7491407520892157897, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Name
@@ -5236,15 +5236,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.04585109
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.g
-      value: 0.5280086
+      value: 0.6226415
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7491407520892157897, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Name
@@ -5305,15 +5305,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.04585109
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.g
-      value: 0.5294118
+      value: 0.6226415
       objectReference: {fileID: 0}
     - target: {fileID: 5730458942373641658, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7491407520892157897, guid: 52273d1c400c11f4f8f2c0d50eb03370, type: 3}
       propertyPath: m_Name
