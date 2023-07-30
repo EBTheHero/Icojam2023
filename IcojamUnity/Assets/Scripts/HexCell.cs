@@ -131,7 +131,7 @@ public class HexCell : MonoBehaviour
 
 	public void InitStats()
 	{
-		TileToughness = (byte)(Main.Instance.Difficulty - Main.Instance.TileDistanceMultiplicatior * (AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, this, Force.NoOne).Count - 1));
+		TileToughness = (byte)Mathf.Min(Main.Instance.Difficulty - Main.Instance.TileDistanceMultiplicatior * (AStarPathfinding.FindPath(Main.Instance.EnemyHomeCell, this, Force.NoOne).Count - 1) + 1, 10);
 	}
 
 	public void Highlight()

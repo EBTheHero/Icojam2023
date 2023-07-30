@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource source;
 
     private Dictionary<string, AudioClip> clips = new Dictionary<string, AudioClip>();
-    public static SoundManager Instance;
+    private static SoundManager Instance;
     private void Awake()
     {
         if (Instance == null)
@@ -26,5 +26,11 @@ public class SoundManager : MonoBehaviour
     public static void Play(string name)
     {
         Instance.source.PlayOneShot(Instance.clips[name]);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 }
