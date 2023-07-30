@@ -1,13 +1,17 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class EnemyAI : MonoBehaviour
 {
-	public HexCell AttackingCell;
-	public HexCell AttackedCell;
+	[System.NonSerialized] public HexCell AttackingCell;
+	[System.NonSerialized] public HexCell AttackedCell;
 
 	public Arrow attackArrow;
+	public Animator enemyArmy;
+	private Vector3 armyResetPos;
 
 	HexCell lastPickedAttackedCell;
 
@@ -16,7 +20,10 @@ public class EnemyAI : MonoBehaviour
 	void Awake()
 	{
 		if (Instance == null)
+		{
 			Instance = this;
+			armyResetPos = enemyArmy.transform.position;
+		}
 	}
 
 	public void AttemptAttack()
@@ -34,6 +41,9 @@ public class EnemyAI : MonoBehaviour
 		AttackingCell = null;
 
 		attackArrow.HideArrow();
+		enemyArmy.transform.position = armyResetPos;
+		enemyArmy.SetBool("death", true);
+		StartCoroutine(DisposeOfBodies());
 	}
 
 	public void PickCell()
@@ -143,11 +153,13 @@ public class EnemyAI : MonoBehaviour
 		{
 			lastPickedAttackedCell = null;
 			attackArrow.HideArrow();
+			enemyArmy.transform.position = armyResetPos;
 		}
 		else
 		{
 			lastPickedAttackedCell = AttackedCell;
 			attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
+			enemyArmy.transform.position = AttackingCell.transform.position;
 		}
 
 	}
@@ -205,4 +217,11 @@ public class EnemyAI : MonoBehaviour
 			return null;
 		}
 	}
+
+	private IEnumerator DisposeOfBodies()
+    {
+		yield return new WaitForSeconds(0.75f);
+		enemyArmy.transform.position = armyResetPos;
+		enemyArmy.SetBool("death", false);
+    }
 }

@@ -19,7 +19,7 @@ public class CanvasArmee : MonoBehaviour
     private Armee army;
 
     public const float ANIMATION_LENGTH = 1.25f;
-    public const float RESULT_DISPLAY_LENGTH = 2.0f;
+    public const float RESULT_DISPLAY_LENGTH = 4.0f;
 
     private void Awake()
     {
