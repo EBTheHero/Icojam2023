@@ -3887,7 +3887,7 @@ MonoBehaviour:
     (https://freesound.org/people/Unlistenable/sounds/391540/)\n\tMrAuralization
     (https://freesound.org/people/MrAuralization/sounds/268324/)\n\tmetalfortress
     (https://freesound.org/people/metalfortress/sounds/611789/)\n\tPixabay (https://pixabay.com/sound-effects/sword-hit-7160/)\n\tKenney
-    (https://www.kenney.nl/)"
+    (https://www.kenney.nl/)\n\tKevin MacLeod (https://www.shazam.com/fr/track/585750997/adventures-in-adventureland)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3914,8 +3914,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
