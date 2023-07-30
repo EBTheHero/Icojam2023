@@ -110,7 +110,7 @@ public class HexCell : MonoBehaviour
 	{
 		if (showCoords)
 			textMeshPro.text = coordinates.ToString();
-		else if (Main.Instance.EnemyHomeCell != this)
+		else
 			textMeshPro.text = Owner == Force.Enemy ? TileToughness.ToString() : "";
 
 		switch (Owner)
