@@ -95,13 +95,22 @@ public class Main : MonoBehaviour
             }
         }
 
-        if (!LoseUI.activeSelf)
+
+
+        if (!WinUI.activeSelf)
         {
-            CurrentTurnUI.Instance.ShowEnemyAttack();
-            EnemyAI.Instance.AttemptAttack();
+            yield return new WaitForSeconds(1f);
+            if (EnemyAI.Instance.AttackingCell != null)
+            {
+                CurrentTurnUI.Instance.ShowEnemyAttack();
+                EnemyAI.Instance.AttemptAttack();
+                yield return new WaitWhile(EnemyArmy.Instance.IsMoving);
+            }
 
             CurrentTurnUI.Instance.ShowEnemyPrepare();
             EnemyAI.Instance.PickCell();
+
+            yield return new WaitWhile(EnemyArmy.Instance.IsMoving);
 
             Main.Instance.EnableEndTurn();
             CurrentTurnUI.Instance.ShowPreparing();
@@ -111,8 +120,12 @@ public class Main : MonoBehaviour
                     arme.InitierDeplacement(HomeCell);
             }
             PlayerTurn = true;
+
         }
     }
+
+
+
 
     public void Win()
     {

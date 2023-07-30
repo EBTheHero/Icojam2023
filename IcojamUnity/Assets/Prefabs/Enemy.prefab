@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6699745934365151559}
   - component: {fileID: 213900218311122222}
   - component: {fileID: 6182956178809249326}
+  - component: {fileID: 7606689972801605095}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -138,3 +139,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Library: []
   m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 35f17f14f19ac1740825185874895250, type: 3}
+--- !u!114 &7606689972801605095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4015008990992220129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba53695d96f7b84a912b80620b26a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Moving: 0

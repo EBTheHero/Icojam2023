@@ -23,8 +23,6 @@ public class EnemyAI : MonoBehaviour
 
 	public Arrow attackArrow;
 	public Animator enemyArmy;
-	private Vector3 armyResetPos;
-
 	HexCell lastPickedAttackedCell;
 
 	public static EnemyAI Instance;
@@ -34,7 +32,6 @@ public class EnemyAI : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			armyResetPos = enemyArmy.transform.position;
 		}
 	}
 
@@ -44,7 +41,11 @@ public class EnemyAI : MonoBehaviour
 		{
 			AttackedCell.Owner = HexCell.Force.Enemy;
 			AttackedCell.UpdateVisuals();
+			EnemyArmy.Instance.InitierDeplacement(AttackedCell);
 			SoundManager.Play("back_004");
+
+			AttackingCell = null;
+			AttackedCell = null;
 		}
 	}
 
@@ -55,7 +56,7 @@ public class EnemyAI : MonoBehaviour
 
 		attackArrow.Pop();
 		attackArrow.HideArrow();
-		enemyArmy.transform.position = armyResetPos;
+		EnemyArmy.Instance.InitierDeplacement(Main.Instance.EnemyHomeCell);
 		enemyArmy.SetBool("death", false);
 	}
 
@@ -166,13 +167,13 @@ public class EnemyAI : MonoBehaviour
 		{
 			lastPickedAttackedCell = null;
 			attackArrow.HideArrow();
-			enemyArmy.transform.position = armyResetPos;
+			EnemyArmy.Instance.InitierDeplacement(Main.Instance.EnemyHomeCell);
 		}
 		else
 		{
 			lastPickedAttackedCell = AttackedCell;
 			attackArrow.UpdateArrow(AttackingCell.transform, AttackedCell.transform);
-			enemyArmy.transform.position = AttackingCell.transform.position;
+			EnemyArmy.Instance.InitierDeplacement(AttackingCell);
 		}
 
 	}
