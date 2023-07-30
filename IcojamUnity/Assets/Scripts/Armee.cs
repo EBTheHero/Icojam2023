@@ -158,9 +158,7 @@ public class Armee : MonoBehaviour
     {
         if (targetCell.Owner != HexCell.Force.Enemy)
         {
-            targetCell = null;
-            AttackArrow.HideArrow();
-
+            TargetCell = null;
             return;
         }
         Fighting = true;
