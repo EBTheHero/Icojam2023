@@ -60,6 +60,7 @@ public class Main : MonoBehaviour
         SelectedArmee = null;
 
         DisableEndTurn();
+        CurrentTurnUI.Instance.ShowAttack();
         StartCoroutine(PlayerAttack());
     }
 
@@ -94,10 +95,14 @@ public class Main : MonoBehaviour
 
         if (!LoseUI.activeSelf)
         {
-
+            CurrentTurnUI.Instance.ShowEnemyAttack();
             EnemyAI.Instance.AttemptAttack();
+
+            CurrentTurnUI.Instance.ShowEnemyPrepare();
             EnemyAI.Instance.PickCell();
+
             Main.Instance.EnableEndTurn();
+            CurrentTurnUI.Instance.ShowPreparing();
             foreach (var arme in Armies)
             {
                 if (arme.CurrentCell.Owner == Force.Enemy)
