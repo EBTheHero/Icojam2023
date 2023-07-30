@@ -3,7 +3,7 @@
 public static class HexMetrics
 {
 
-	public const float outerRadius = 0.5f;
+	public const float outerRadius = 0.49f;
 
 	public const float innerRadius = outerRadius * 0.866025404f;
 
