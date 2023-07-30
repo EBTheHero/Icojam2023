@@ -91,15 +91,20 @@ public class Main : MonoBehaviour
                 yield return new WaitWhile(arme.IsFighting);
             }
         }
-        EnemyAI.Instance.AttemptAttack();
-        EnemyAI.Instance.PickCell();
-        Main.Instance.EnableEndTurn();
-        foreach (var arme in Armies)
+
+        if (!LoseUI.activeSelf)
         {
-            if (arme.CurrentCell.Owner == Force.Enemy)
-                arme.InitierDeplacement(HomeCell);
+
+            EnemyAI.Instance.AttemptAttack();
+            EnemyAI.Instance.PickCell();
+            Main.Instance.EnableEndTurn();
+            foreach (var arme in Armies)
+            {
+                if (arme.CurrentCell.Owner == Force.Enemy)
+                    arme.InitierDeplacement(HomeCell);
+            }
+            PlayerTurn = true;
         }
-        PlayerTurn = true;
     }
 
     public void Win()

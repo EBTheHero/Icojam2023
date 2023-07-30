@@ -749,7 +749,7 @@ MonoBehaviour:
   HomeCell: {fileID: 0}
   EnemyHomeCell: {fileID: 0}
   Difficulty: 10
-  TileDistanceMultiplicatior: 1.25
+  TileDistanceMultiplicatior: 1.05
   NumberOfRocks: 2
   RockSize: 3
   WinUI: {fileID: 972688901}

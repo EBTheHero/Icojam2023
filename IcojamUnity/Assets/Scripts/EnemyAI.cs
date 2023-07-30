@@ -63,12 +63,10 @@ public class EnemyAI : MonoBehaviour
 			// find candidates
 			var potentialCandidates = new List<HexCell>();
 			List<HexCell> playerCells = HexGrid.Instance.GetOwnerCells(HexCell.Force.Player);
-			if (lastPickedAttackedCell != null)
-				playerCells.Remove(lastPickedAttackedCell);
 
 			foreach (var item in playerCells)
 			{
-				var vulnerableCells = GetSingleCuttable(item);
+				var vulnerableCells = GetSingleCuttable(item, lastPickedAttackedCell);
 
 				if (vulnerableCells != null)
 				{
@@ -191,9 +189,12 @@ public class EnemyAI : MonoBehaviour
 	}
 
 	// return a list of player cells that can be isolated
-	HexCell GetSingleCuttable(HexCell hexCell)
+	HexCell GetSingleCuttable(HexCell hexCell, HexCell ignoreCell = null)
 	{
 		var alliedCells = HexGrid.Instance.GetAlliedAdjacentCell(hexCell);
+		if (ignoreCell != null)
+			alliedCells.Remove(ignoreCell);
+
 		if (alliedCells.Count == 1)
 		{
 			// this cell can be isolated
