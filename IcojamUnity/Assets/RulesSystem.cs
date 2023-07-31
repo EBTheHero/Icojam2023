@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RulesSystem : MonoBehaviour
 {
@@ -36,5 +37,10 @@ public class RulesSystem : MonoBehaviour
         }
 
         Pages[index].SetActive(true);
+    }
+
+    public void LaunchGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }
