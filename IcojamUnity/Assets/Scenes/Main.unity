@@ -832,6 +832,7 @@ MonoBehaviour:
   - {fileID: 1241233983}
   - {fileID: 237597471}
   endTurnButton: {fileID: 319023597}
+  music: {fileID: 1378545378}
   HomeCell: {fileID: 0}
   EnemyHomeCell: {fileID: 0}
   Difficulty: 10
@@ -1098,8 +1099,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -884.22, y: 473.6}
-  m_SizeDelta: {x: 102.28, y: 90.84}
+  m_AnchoredPosition: {x: -813.66, y: 473.6}
+  m_SizeDelta: {x: 243.4, y: 90.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &285184540
 MonoBehaviour:
@@ -4091,8 +4092,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
