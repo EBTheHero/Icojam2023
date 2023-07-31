@@ -16,6 +16,8 @@ public class RulesSystem : MonoBehaviour
     {
         index = 0;
         UpdatePageVisual();
+        PlayerPrefs.SetInt("ReadRules", 1);
+        PlayerPrefs.Save();
     }
 
     public void NextPage()
