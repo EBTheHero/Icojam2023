@@ -7,4 +7,9 @@ public class DevToggleDefaultValue : MonoBehaviour
     {
         GetComponent<Toggle>().isOn = GameManager.Instance.DevMode;
     }
+
+    public void SetDevModeOfInstance(bool value)
+    {
+        GameManager.Instance.DevMode = value;
+    }
 }

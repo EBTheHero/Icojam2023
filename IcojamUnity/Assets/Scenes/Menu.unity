@@ -1453,9 +1453,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 673142599}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: SetDevMode
+      - m_Target: {fileID: 368098734}
+        m_TargetAssemblyTypeName: DevToggleDefaultValue, Assembly-CSharp
+        m_MethodName: SetDevModeOfInstance
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2793,7 +2793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e6981d5cc31ce41aa2131f8e692c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DevMode: 1
 --- !u!4 &673142600
 Transform:
   m_ObjectHideFlags: 0
