@@ -141,7 +141,7 @@ public class HexCell : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		if (GameObject.Find("DevToggle").GetComponent<Toggle>().isOn)
+		if (GameManager.Instance.DevMode == true && GameObject.Find("DevToggle").GetComponent<Toggle>().isOn)
 		{
 			switch (this.Owner)
 			{

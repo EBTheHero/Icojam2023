@@ -11,7 +11,5 @@ public class DevElements : MonoBehaviour
             foreach (Transform t in transform)
                 t.gameObject.SetActive(true);
         }
-        else
-            Destroy(gameObject);
     }
 }
