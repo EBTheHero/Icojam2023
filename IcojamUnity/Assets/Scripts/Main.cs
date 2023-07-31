@@ -12,6 +12,7 @@ public class Main : MonoBehaviour
 
     private Armee selectedArmee;
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private GameObject music;
 
     public HexCell HomeCell;
     public HexCell EnemyHomeCell;
@@ -130,10 +131,12 @@ public class Main : MonoBehaviour
     public void Win()
     {
         WinUI.SetActive(true);
+        music.SetActive(false);
     }
 
     public void Lose()
     {
         LoseUI.SetActive(true);
+        music.SetActive(false);
     }
 }
